@@ -53,16 +53,33 @@ img{max-width:100%;display:block}
 .hero h1{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(46px,10.4vw,166px);line-height:.86;letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap}
 .hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--ink)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.logo-plate{background:#FFFFFF;border:1px solid var(--ink)}
-.logo-plate svg{display:block;width:100%;height:auto}
+/* dark header + hero */
+.site-header{background:var(--ink);color:var(--light);border-bottom:1px solid #2A2927}
+.site-header a{color:var(--light)}.site-header a:hover{color:#FFFFFF}
+.hero-dark{background-color:var(--ink);color:var(--light);background-image:linear-gradient(rgba(232,230,225,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(232,230,225,.045) 1px,transparent 1px);background-size:40px 40px;background-position:-1px -1px}
+.hero-dark a{color:var(--light)}
+.hero2{display:flex;flex-direction:column;gap:clamp(36px,4.5vw,64px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(48px,5vw,72px)}
+.hero2-brand{display:flex;align-items:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap}
+.hero-mark{flex:0 0 auto;width:clamp(200px,24vw,340px);height:auto;overflow:visible}
+.hero-wordmark{min-width:0;display:flex;flex-direction:column;gap:18px;padding-left:clamp(24px,3.5vw,56px);border-left:1px solid rgba(232,230,225,.45)}
+.hero-wordmark h1{margin:0;display:flex;flex-direction:column;gap:14px;font-weight:inherit}
+.wm-name{font-family:var(--serif);font-weight:500;font-size:clamp(44px,7vw,112px);line-height:.9;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.wm-health{font-family:var(--sans);font-size:clamp(12px,1.1vw,15px);font-weight:600;letter-spacing:.7em;text-transform:uppercase}
+.wm-tag{margin:0;font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--on-dark-muted)}
+.ruler{height:14px;background-image:repeating-linear-gradient(90deg,rgba(232,230,225,.55) 0 1px,transparent 1px 10px),repeating-linear-gradient(90deg,rgba(232,230,225,.85) 0 1px,transparent 1px 50px);background-size:100% 7px,100% 14px;background-repeat:no-repeat}
+.hero2-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.hero2-bottom p{margin:0;font-size:clamp(16px,1.3vw,19px);font-weight:500;max-width:560px;color:#D6D2CB}
+@media (max-width:900px){.hero-wordmark{border-left:none;padding-left:0;padding-top:24px;border-top:1px solid rgba(232,230,225,.45)}.wm-name{white-space:normal}}
+/* who (light band) */
+.who-band{border-bottom:1px solid var(--rule)}
 .hero-bottom p{margin:0;font-size:clamp(16px,1.3vw,19px);font-weight:500;max-width:560px}
 .actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
 /* who */
 .who{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:clamp(28px,3vw,48px);padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(40px,5vw,64px)}
 .who article{display:flex;flex-direction:column;gap:10px}
-.who .num{font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--on-dark-muted)}
+.who .num{font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--muted)}
 .who h2{margin:0;font-family:var(--serif);font-size:23px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
-.who p{margin:0;font-size:13px;color:#BDB9B2}
+.who p{margin:0;font-size:13px;color:#3E3B37}
 .who a{margin-top:4px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
 /* about */
 .about{background:var(--stone)}
@@ -139,24 +156,25 @@ footer{overflow:hidden}
 </div>
 </div>
 
-<header>
+<header class="site-header">
 <div class="wrap nav">
 <nav aria-label="Primary">
 <a href="#how">How it works</a>
 <a href="#who">Who I help</a>
 <a href="#compare">Plans</a>
 </nav>
-<a class="wordmark" href="#top">Aiden James</a>
+<a class="wordmark" href="#top" aria-label="Aiden James Health, home"><svg width="30" height="40" viewBox="170 140 220 290" aria-hidden="true" style="display:block"><g fill="none" stroke="#E8E6E1" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"><path d="M190 340 L280 160"/><path d="M280 160 V372 Q280 410 244 410 Q216 410 212 386"/><path d="M225 270 H370"/><path d="M370 160 V340"/></g><rect x="254" y="244" width="52" height="52" fill="#E8E6E1"/><rect x="274.5" y="253" width="11" height="34" fill="#111111"/><rect x="263" y="264.5" width="34" height="11" fill="#111111"/></svg></a>
 <nav class="right" aria-label="Secondary">
 <a href="#about">About</a>
 <a href="#faq">FAQ</a>
-<a class="btn" href="#book">Book a call</a>
+<a class="btn btn-light" href="#book">Book a call</a>
 </nav>
 </div>
 </header>
 
 <main>
-<section id="top" class="wrap hero">
+<section id="top" class="hero-dark">
+<div class="wrap hero2">
 <div class="hero-top">
 <div class="stack caps"><p>Health coverage
 that moves
@@ -165,54 +183,44 @@ with you.</p><div class="rule"></div></div>
 31 states
 NPN 22297742</p><div class="rule"></div></div>
 </div>
-<h1 class="sr-only">Aiden James Health, licensed health and life insurance advisor in Tampa, Florida</h1>
-<div class="logo-plate">
-<svg viewBox="0 0 1200 420" role="img" aria-label="Aiden James Health logo: AJH precision mark with health-cross badge beside the Aiden James Health wordmark">
-<rect width="1200" height="420" fill="#FFFFFF"/>
-<g transform="translate(230 205) scale(0.72) translate(-280 -285)">
-<g fill="none" stroke="#000000">
+<div class="hero2-brand">
+<svg class="hero-mark" viewBox="150 140 300 290" aria-hidden="true">
+<g fill="none" stroke="#E8E6E1">
 <circle cx="280" cy="270" r="118" stroke-width="5" stroke-dasharray="0.7 9.597" transform="rotate(-90 280 270)"/>
-<circle cx="280" cy="270" r="112" stroke-width="0.7"/>
-<line x1="130" y1="270" x2="430" y2="270" stroke-width="0.7" stroke-dasharray="3 5"/>
-<line x1="280" y1="110" x2="280" y2="430" stroke-width="0.7" stroke-dasharray="3 5"/>
-<line x1="150" y1="340" x2="410" y2="340" stroke-width="0.7" stroke-dasharray="3 5"/>
-<path d="M230 340 A40 40 0 0 0 207.9 304.2" stroke-width="0.9"/>
+<circle cx="280" cy="270" r="112" stroke-width="0.6" opacity="0.7"/>
+<line x1="150" y1="270" x2="450" y2="270" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.7"/>
+<line x1="280" y1="140" x2="280" y2="430" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.7"/>
+<line x1="160" y1="340" x2="410" y2="340" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.7"/>
+<path d="M230 340 A40 40 0 0 0 207.9 304.2" stroke-width="0.8"/>
 </g>
-<g fill="none" stroke="#000000" stroke-width="12" stroke-linecap="square" stroke-linejoin="miter">
+<text x="236" y="322" font-family="Montserrat, system-ui, sans-serif" font-size="8" font-weight="600" letter-spacing="2" fill="#A8A49D">63.4°</text>
+<g fill="none" stroke="#E8E6E1" stroke-width="12" stroke-linecap="square" stroke-linejoin="miter">
 <path d="M190 340 L280 160"/>
 <path d="M280 160 V372 Q280 410 244 410 Q216 410 212 386"/>
 <path d="M225 270 H370"/>
 <path d="M370 160 V340"/>
 </g>
-<rect x="258" y="248" width="44" height="44" fill="#000000"/>
-<rect x="275.5" y="256" width="9" height="28" fill="#FFFFFF"/>
-<rect x="266" y="265.5" width="28" height="9" fill="#FFFFFF"/>
-</g>
-<g font-family="Montserrat, system-ui, sans-serif" font-size="8" font-weight="600" letter-spacing="2" fill="#000000">
-<text x="200" y="233">63.4°</text>
-<text x="60" y="58">AJH / 21</text>
-<text x="1140" y="58" text-anchor="end">FIG. A</text>
-</g>
-<line x1="400" y1="118" x2="400" y2="292" stroke="#000000" stroke-width="1"/>
-<text x="440" y="212" font-family="'Bodoni Moda', Didot, Georgia, serif" font-size="66" font-weight="500" letter-spacing="5" fill="#000000">AIDEN JAMES</text>
-<text x="443" y="254" font-family="Montserrat, system-ui, sans-serif" font-size="14" font-weight="600" letter-spacing="10" fill="#000000">HEALTH</text>
-<text x="443" y="284" font-family="Montserrat, system-ui, sans-serif" font-size="9.5" font-weight="500" letter-spacing="3.5" fill="#000000">LICENSED HEALTH &amp; LIFE INSURANCE ADVISOR</text>
-<g fill="none" stroke="#000000">
-<line x1="60" y1="366" x2="1140" y2="366" stroke-width="6" stroke-dasharray="0.6 9.4"/>
-<line x1="60" y1="369" x2="1140" y2="369" stroke-width="12" stroke-dasharray="0.8 49.2"/>
-</g>
+<rect x="258" y="248" width="44" height="44" fill="#E8E6E1"/>
+<rect x="275.5" y="256" width="9" height="28" fill="#111111"/>
+<rect x="266" y="265.5" width="28" height="9" fill="#111111"/>
 </svg>
+<div class="hero-wordmark">
+<h1><span class="wm-name">Aiden James</span><span class="wm-health">Health</span></h1>
+<p class="wm-tag">Licensed Health &amp; Life Insurance Advisor · Tampa, Florida</p>
 </div>
-<div class="hero-bottom">
+</div>
+<div class="ruler" aria-hidden="true"></div>
+<div class="hero2-bottom">
 <p>Private health coverage for the self-employed, families, business owners, and anyone leaving a job. Real quotes, honest advice.</p>
 <div class="actions">
-<a class="btn" href="#book">Book a call</a>
+<a class="btn btn-light" href="#book">Book a call</a>
 <a class="link" href="#quote">Get a quote</a>
+</div>
 </div>
 </div>
 </section>
 
-<section id="who" class="dark">
+<section id="who" class="who-band">
 <div class="wrap who">
 <article><div class="num">01</div><h2>Self-employed</h2><p>Private PPOs with nationwide networks, built around work that doesn’t come with a benefits package.</p><a href="#quote">Get a quote →</a></article>
 <article><div class="num">02</div><h2>Families</h2><p>When adding your family to an employer plan costs too much, there are often better options.</p><a href="#quote">Get a quote →</a></article>
