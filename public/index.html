@@ -3,168 +3,272 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aiden James Health | Private Health Insurance Advisor · Tampa, FL</title>
-<meta name="description" content="Independent health insurance advisor in Tampa, licensed in 31 states. Private PPO, Marketplace, small business group, and supplemental plans for the self-employed, families, business owners, and anyone leaving a job.">
+<title>Aiden James Health | Private Health Insurance Advisor in Tampa, FL</title>
+<meta name="description" content="Independent health insurance advisor in Tampa, licensed in 31 states. Compare private PPO, Marketplace, small business group, and supplemental plans. Free 15-minute call, no obligation.">
+<meta name="theme-color" content="#111111">
 <meta property="og:title" content="Aiden James Health">
-<meta property="og:description" content="Real plans. Real prices. Honest advice on private PPO, Marketplace, and group health coverage.">
+<meta property="og:description" content="Real plans, real prices, and honest advice on private PPO, Marketplace, and group health coverage.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="/images/aiden-james.jpg">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "InsuranceAgency",
+  "name": "Aiden James Health",
+  "description": "Independent health insurance advisor helping the self-employed, families, business owners, and people leaving a job compare private PPO, Marketplace, group, and supplemental plans.",
+  "telephone": "+1-813-451-0821",
+  "email": "ajh@aidenjameshealth.us",
+  "image": "/images/aiden-james.jpg",
+  "address": {"@type": "PostalAddress", "addressLocality": "Tampa", "addressRegion": "FL", "addressCountry": "US"},
+  "founder": {"@type": "Person", "name": "Aiden James", "jobTitle": "Licensed Health and Life Insurance Advisor"},
+  "areaServed": ["Alabama","Arkansas","Colorado","Delaware","Florida","Georgia","Iowa","Illinois","Indiana","Kansas","Kentucky","Louisiana","Maryland","Michigan","Missouri","Mississippi","Montana","North Carolina","Nebraska","Nevada","Ohio","Oklahoma","South Carolina","South Dakota","Tennessee","Texas","Utah","Virginia","Wisconsin","West Virginia","Wyoming"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Why use an advisor instead of shopping on my own?", "acceptedAnswer": {"@type": "Answer", "text": "An advisor can compare options across carriers, including private plans that don’t appear on the Marketplace, and narrow them down to the few that actually fit you."}},
+    {"@type": "Question", "name": "What if I have a pre-existing condition?", "acceptedAnswer": {"@type": "Answer", "text": "Marketplace plans can’t turn you down or charge more for pre-existing conditions. Some private plans ask health questions, so the right match depends on your history."}},
+    {"@type": "Question", "name": "Can I keep my doctors?", "acceptedAnswer": {"@type": "Answer", "text": "Often, yes. Many PPO plans let you see doctors nationwide without referrals, and your doctors and hospitals can be checked before you apply."}},
+    {"@type": "Question", "name": "Do I have to wait for open enrollment?", "acceptedAnswer": {"@type": "Answer", "text": "Not always. Many private plans accept applications year-round, and life events like losing coverage, moving, or having a baby can open a special enrollment window for Marketplace plans."}},
+    {"@type": "Question", "name": "What does it cost to work with you?", "acceptedAnswer": {"@type": "Answer", "text": "Nothing. Advice and quotes are free. The advisor is paid by the insurance carrier when you enroll, not by you."}},
+    {"@type": "Question", "name": "What happens after I enroll?", "acceptedAnswer": {"@type": "Answer", "text": "You keep the same point of contact for claims, billing, and renewal questions."}}
+  ]
+}
+</script>
 <style>
-:root{--bg:#E8E6E1;--ink:#111111;--muted:#55524D;--rule:#C9C5BE;--surface:#F2F0EC;--stone:#D9D6D0;--light:#E8E6E1;--on-dark-muted:#A8A49D;--serif:'Bodoni Moda',Didot,Georgia,serif;--sans:'Montserrat',system-ui,sans-serif;--pad:clamp(20px,4vw,56px)}
+:root{
+  --paper:#E8E6E1;--ink:#111111;--graphite:#55524D;--rule:#C9C5BE;--surface:#F2F0EC;--stone:#D9D6D0;--white:#FFFFFF;
+  --on-dark:#E8E6E1;--on-dark-2:#BDB9B2;--on-dark-3:#A8A49D;--dark-rule:#2E2D2B;
+  --serif:'Bodoni Moda',Didot,Georgia,serif;--sans:'Montserrat',system-ui,sans-serif;
+  --pad:clamp(20px,4vw,56px);--section:clamp(72px,9vw,128px);--header-h:68px
+}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6}
-a{color:var(--ink)}a:hover{color:var(--muted)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
 img{max-width:100%;display:block}
-:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.wrap{max-width:1440px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-.caps{font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase}
-.btn{display:inline-block;background:var(--ink);color:var(--light);text-decoration:none;padding:16px 26px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;border:none;cursor:pointer}
-.btn:hover{color:var(--light);background:#2A2927}
-.btn-light{background:var(--light);color:var(--ink)}.btn-light:hover{background:#FFFFFF;color:var(--ink)}
-.link{text-decoration:none;padding-bottom:4px;border-bottom:1px solid currentColor;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
-.display{font-family:var(--serif);font-weight:500;font-size:clamp(54px,6.6vw,104px);line-height:.92;letter-spacing:-.02em;text-transform:uppercase;margin:0}
-.h-sm{font-family:var(--serif);font-weight:500;font-size:clamp(28px,2.6vw,38px);letter-spacing:.02em;text-transform:uppercase;margin:0}
-.dark{background:var(--ink);color:var(--light)}.dark a{color:var(--light)}
-.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px);align-items:start}
-.section{padding-top:clamp(64px,8vw,112px);padding-bottom:clamp(64px,8vw,112px)}
-.row-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
-/* top bar + nav */
-.topbar{font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase}
-.topbar .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
-.topbar a{text-decoration:none}
-.nav{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:24px;padding-top:22px;padding-bottom:22px}
-.nav nav{display:flex;gap:26px;flex-wrap:wrap;align-items:center;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
-.nav nav a{text-decoration:none}
-.nav nav.right{justify-content:flex-end}
-.wordmark{font-family:var(--serif);font-size:26px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;white-space:nowrap}
-@media (max-width:860px){.nav{display:flex;flex-direction:column;align-items:flex-start;gap:14px}.nav nav.right{justify-content:flex-start}}
-/* hero */
-.hero{display:flex;flex-direction:column;gap:clamp(40px,5vw,72px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(56px,6vw,88px)}
-.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
-.stack{display:flex;flex-direction:column;gap:14px}
-.stack p{margin:0;line-height:2;white-space:pre-line}
-.stack .rule{width:36px;height:1px;background:currentColor}
-.stack.right{align-items:flex-end;text-align:right}
-.hero h1{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(46px,10.4vw,166px);line-height:.86;letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap}
-.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--ink)}
+button{font:inherit}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--white);color:var(--ink);padding:10px 16px;font-weight:600}
+.skip:focus{left:8px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-/* dark header + hero */
-.site-header{background:var(--ink);color:var(--light);border-bottom:1px solid #2A2927}
-.site-header a{color:var(--light)}.site-header a:hover{color:#FFFFFF}
-.hero-dark{background-color:var(--ink);color:var(--light);background-image:linear-gradient(rgba(232,230,225,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(232,230,225,.045) 1px,transparent 1px);background-size:40px 40px;background-position:-1px -1px}
-.hero-dark a{color:var(--light)}
-.hero2{display:flex;flex-direction:column;gap:clamp(36px,4.5vw,64px);padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(48px,5vw,72px)}
-.hero2-brand{display:flex;align-items:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap}
-.hero-mark{flex:0 0 auto;width:clamp(200px,24vw,340px);height:auto;overflow:visible}
-.hero-wordmark{min-width:0;display:flex;flex-direction:column;gap:18px;padding-left:clamp(24px,3.5vw,56px);border-left:1px solid rgba(232,230,225,.45)}
-.hero-wordmark h1{margin:0;display:flex;flex-direction:column;gap:14px;font-weight:inherit}
+.wrap{max-width:1360px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+/* Type */
+.h2{font-family:var(--serif);font-weight:500;font-size:clamp(40px,5.4vw,84px);line-height:.95;letter-spacing:-.015em;margin:0}
+.h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2vw,30px);line-height:1.1;margin:0}
+.lead{margin:0;font-size:clamp(17px,1.35vw,19px);line-height:1.6;color:#3E3B37;max-width:34em}
+.meta{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.section-head{display:grid;gap:20px;margin-bottom:clamp(40px,5vw,64px);max-width:720px}
+
+/* Buttons + links */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;background:var(--ink);color:var(--white);text-decoration:none;border:1px solid var(--ink);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:#2B2A28}
+.btn-light{background:var(--on-dark);color:var(--ink);border-color:var(--on-dark)}
+.btn-light:hover{background:var(--white)}
+.btn-ghost-dark{background:transparent;color:var(--on-dark);border-color:rgba(232,230,225,.5)}
+.btn-ghost-dark:hover{background:rgba(232,230,225,.08)}
+.text-link{font-weight:600;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.text-link:hover{text-decoration-thickness:2px}
+
+/* Top bar */
+.topbar{background:var(--ink);color:var(--on-dark-2);font-size:12px;letter-spacing:.04em}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:9px;padding-bottom:9px}
+.topbar a{color:var(--on-dark);text-underline-offset:3px}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:40;background:rgba(17,17,17,.96);backdrop-filter:saturate(140%) blur(8px);color:var(--on-dark);border-bottom:1px solid var(--dark-rule)}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:var(--header-h)}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--on-dark)}
+.brand svg{width:26px;height:34px;flex:none}
+.brand span{font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.primary-nav{display:flex;align-items:center;gap:30px}
+.primary-nav a{font-size:13px;font-weight:500;text-decoration:none;color:var(--on-dark-2)}
+.primary-nav a:hover{color:var(--white)}
+.primary-nav .btn{min-height:44px;padding:0 20px;color:var(--ink)}
+.menu-btn{display:none;min-height:44px;min-width:44px;padding:0 12px;background:transparent;border:1px solid rgba(232,230,225,.4);color:var(--on-dark);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+@media (max-width:920px){
+  .menu-btn{display:inline-flex;align-items:center}
+  .primary-nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--ink);border-bottom:1px solid var(--dark-rule);padding:8px var(--pad) 24px}
+  .primary-nav a{padding:16px 0;border-bottom:1px solid var(--dark-rule);font-size:16px;color:var(--on-dark)}
+  .primary-nav .btn{margin-top:20px;border-bottom:none}
+  .site-header[data-open="true"] .primary-nav{display:flex}
+}
+
+/* Hero */
+.hero{background-color:var(--ink);color:var(--on-dark);background-image:linear-gradient(rgba(232,230,225,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(232,230,225,.045) 1px,transparent 1px);background-size:40px 40px;background-position:-1px -1px}
+.hero-inner{display:grid;gap:clamp(40px,5vw,72px);padding-top:clamp(48px,6vw,88px);padding-bottom:clamp(48px,6vw,80px)}
+.hero-brand{display:flex;align-items:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap}
+.hero-mark{flex:none;width:clamp(200px,24vw,340px);height:auto;overflow:visible}
+.hero-wordmark{min-width:0;display:grid;gap:18px;padding-left:clamp(24px,3.5vw,56px);border-left:1px solid rgba(232,230,225,.45)}
+.hero-wordmark h1{margin:0;display:grid;gap:16px;font-weight:inherit}
 .wm-name{font-family:var(--serif);font-weight:500;font-size:clamp(44px,7vw,112px);line-height:.9;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
-.wm-health{font-family:var(--sans);font-size:clamp(12px,1.1vw,15px);font-weight:600;letter-spacing:.7em;text-transform:uppercase}
-.wm-tag{margin:0;font-size:10px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--on-dark-muted)}
-.ruler{height:14px;background-image:repeating-linear-gradient(90deg,rgba(232,230,225,.55) 0 1px,transparent 1px 10px),repeating-linear-gradient(90deg,rgba(232,230,225,.85) 0 1px,transparent 1px 50px);background-size:100% 7px,100% 14px;background-repeat:no-repeat}
-.hero2-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
-.hero2-bottom p{margin:0;font-size:clamp(16px,1.3vw,19px);font-weight:500;max-width:560px;color:#D6D2CB}
+.wm-health{font-size:clamp(12px,1.1vw,15px);font-weight:600;letter-spacing:.7em;text-transform:uppercase}
+.wm-tag{margin:0;font-size:14px;color:var(--on-dark-3)}
+.ruler{height:14px;background-image:repeating-linear-gradient(90deg,rgba(232,230,225,.5) 0 1px,transparent 1px 10px),repeating-linear-gradient(90deg,rgba(232,230,225,.85) 0 1px,transparent 1px 50px);background-size:100% 7px,100% 14px;background-repeat:no-repeat}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.hero-bottom .lead{color:#D6D2CB}
+.hero-cta{display:grid;gap:12px;justify-items:start}
+.hero-cta .buttons{display:flex;gap:12px;flex-wrap:wrap}
+.hero-cta small{font-size:13px;color:var(--on-dark-3)}
 @media (max-width:900px){.hero-wordmark{border-left:none;padding-left:0;padding-top:24px;border-top:1px solid rgba(232,230,225,.45)}.wm-name{white-space:normal}}
-/* who (light band) */
-.who-band{border-bottom:1px solid var(--rule)}
-.hero-bottom p{margin:0;font-size:clamp(16px,1.3vw,19px);font-weight:500;max-width:560px}
-.actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
-/* who */
-.who{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:clamp(28px,3vw,48px);padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(40px,5vw,64px)}
-.who article{display:flex;flex-direction:column;gap:10px}
-.who .num{font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--muted)}
-.who h2{margin:0;font-family:var(--serif);font-size:23px;font-weight:500;letter-spacing:.04em;text-transform:uppercase}
-.who p{margin:0;font-size:13px;color:#3E3B37}
-.who a{margin-top:4px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
-/* about */
+/* the one orchestrated moment: the mark draws itself on load */
+.hero-mark .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .9s cubic-bezier(.65,0,.25,1) both}
+.hero-mark .d2{animation-delay:.2s}.hero-mark .d3{animation-delay:.45s}.hero-mark .d4{animation-delay:.6s}
+.hero-mark .guides{animation:fade 1.2s ease .1s both}
+.hero-mark .badge{animation:fade .35s ease 1.2s both}
+@keyframes draw{0%{stroke-dashoffset:1;opacity:0}1%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* Credibility */
+.cred{border-bottom:1px solid var(--rule)}
+.cred .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:28px;padding-top:32px;padding-bottom:32px}
+.cred-item{display:flex;align-items:center;gap:16px}
+.cred-item svg{flex:none}
+.cred-item strong{display:block;font-size:15px;font-weight:600}
+.cred-item span{font-size:14px;color:var(--graphite)}
+
+/* Who */
+.who{padding-top:var(--section);padding-bottom:var(--section)}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));border-top:1px solid var(--ink)}
+.who-card{display:grid;align-content:start;gap:14px;padding:28px 28px 32px 0;border-bottom:1px solid var(--rule)}
+.who-card p{margin:0;color:#3E3B37;max-width:30em}
+.who-card a{justify-self:start;margin-top:6px;font-size:14px}
+@media (min-width:900px){.who-card + .who-card{padding-left:28px;border-left:1px solid var(--rule)}}
+
+/* Steps */
+.steps-section{background:var(--surface);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-top:var(--section);padding-bottom:var(--section)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(24px,3vw,40px);counter-reset:step}
+.steps li{display:grid;gap:12px;padding-top:24px;border-top:1px solid var(--ink);counter-increment:step}
+.steps li::before{content:counter(step);font-family:var(--serif);font-style:italic;font-size:56px;line-height:.9}
+.steps h3{margin:0;font-size:17px;font-weight:600}
+.steps p{margin:0;color:var(--graphite)}
+
+/* About */
 .about{background:var(--stone)}
-.about .wrap{display:flex;flex-wrap:wrap;align-items:stretch;gap:clamp(32px,5vw,80px)}
-.about-text{flex:1 1 420px;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:clamp(56px,7vw,104px) 0}
-.about-text .promise{margin:0;font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.3;max-width:460px}
-.about-text .bio{margin:0;font-size:14px;color:#3E3B37;max-width:460px}
-.about img{flex:0 0 auto;align-self:flex-end;width:min(100%,320px);height:clamp(440px,40vw,560px);object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.05);margin-top:clamp(32px,4vw,56px)}
-/* trust */
-.trust{border-bottom:1px solid var(--rule)}
-.trust .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:24px;padding-top:32px;padding-bottom:32px}
-.trust-item{display:flex;align-items:center;gap:16px}
-.trust-item strong{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-.trust-item span{font-size:12px;color:var(--muted)}
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:20px}
-.step{background:var(--surface);padding:28px 24px 32px;display:flex;flex-direction:column;gap:14px;min-height:240px}
-.step .n{font-family:var(--serif);font-style:italic;font-size:64px;line-height:.9}
-.step h3{margin:auto 0 0;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
-.step p{margin:0;font-size:13px;color:var(--muted)}
-/* quote */
-.quote-options{display:flex;flex-direction:column;border-top:1px solid #3A3834}
-.quote-options a{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;border-bottom:1px solid #3A3834;text-decoration:none}
-.quote-options strong{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
-.quote-options span{font-size:13px;color:#BDB9B2}
-/* compare */
-.table-wrap{overflow-x:auto;border-top:2px solid var(--ink)}
-table{width:100%;min-width:760px;border-collapse:collapse;text-align:left;font-size:14px}
-th,td{padding:16px;border-bottom:1px solid var(--rule);vertical-align:top}
-thead th{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
-tbody th{padding-left:0;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);width:16%}
-/* states */
-.state-msg{padding:18px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;min-height:20px}
-.legend{display:flex;gap:22px;flex-wrap:wrap;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.about-inner{display:flex;flex-wrap:wrap;align-items:stretch;gap:clamp(40px,6vw,96px)}
+.about-text{flex:1 1 420px;display:grid;align-content:center;gap:24px;padding:var(--section) 0}
+.promise{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.2vw,30px);line-height:1.3;max-width:22em}
+.about-text .lead{color:#3E3B37}
+.about-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.about figure{flex:0 0 auto;align-self:flex-end;margin:clamp(40px,5vw,64px) 0 0;width:min(100%,320px)}
+.about img{width:100%;height:clamp(440px,40vw,560px);object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.05)}
+
+/* Compare */
+.compare{padding-top:var(--section);padding-bottom:var(--section)}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.plan{background:var(--white);border:1px solid var(--rule);padding:28px 24px;display:grid;align-content:start;gap:18px}
+.plan > p{margin:0;color:var(--graphite)}
+.plan dl{margin:0;display:grid;gap:14px;border-top:1px solid var(--rule);padding-top:18px}
+.plan dt{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite)}
+.plan dd{margin:4px 0 0;font-size:15px}
+.compare-note{margin:24px 0 0;font-size:14px;color:var(--graphite)}
+
+/* States */
+.states{padding-bottom:var(--section)}
+.states-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,96px);align-items:center}
+.states-text{display:grid;gap:22px}
+.field{display:grid;gap:8px;max-width:360px}
+.field label{font-size:14px;font-weight:600}
+.field select{min-height:52px;padding:0 14px;border:1px solid var(--ink);background:var(--white);color:var(--ink);font:inherit;font-size:16px}
+.state-result{min-height:56px;padding:16px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-size:16px}
+.state-result a{font-weight:600}
+.legend{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--graphite)}
 .legend span{display:flex;align-items:center;gap:8px}
-.legend i{width:12px;height:12px;display:inline-block}
+.legend i{width:14px;height:14px;display:inline-block}
 .tilemap{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:4px}
-.tile{aspect-ratio:1/1;border:1px solid var(--on-dark-muted);background:transparent;color:var(--muted);font-family:var(--sans);font-size:clamp(8px,.85vw,11px);font-weight:700;letter-spacing:.06em;cursor:pointer;padding:0}
-.tile.lic{background:var(--ink);border-color:var(--ink);color:var(--light)}
-.tile[aria-pressed="true"]{background:#FFFFFF;border-color:var(--ink);color:var(--ink)}
-/* booking */
-.book{background:var(--surface);border-top:1px solid var(--rule)}
-.calendly-inline-widget{min-width:320px;height:700px;background:#FFFFFF;border:1px solid var(--ink)}
-/* faq */
-.faq{border-top:2px solid var(--ink)}
-.faq details{border-bottom:1px solid var(--rule);padding:22px 0}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.tile{aspect-ratio:1/1;padding:0;border:1px solid var(--on-dark-3);background:transparent;color:var(--graphite);font-size:clamp(8px,.85vw,11px);font-weight:700;letter-spacing:.04em;cursor:pointer}
+.tile.lic{background:var(--ink);border-color:var(--ink);color:var(--on-dark)}
+.tile[aria-pressed="true"]{background:var(--white);border-color:var(--ink);color:var(--ink);outline:2px solid var(--ink);outline-offset:1px}
+
+/* Book */
+.book{background:var(--ink);color:var(--on-dark);padding-top:var(--section);padding-bottom:var(--section)}
+.book-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,96px);align-items:start}
+.book-text{display:grid;gap:24px;position:sticky;top:calc(var(--header-h) + 32px)}
+.book-text .lead{color:var(--on-dark-2)}
+.facts{display:grid;margin:0;border-top:1px solid var(--dark-rule)}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--dark-rule)}
+.facts dt{color:var(--on-dark-3)}.facts dd{margin:0}
+.alt-contact{display:grid;gap:10px}
+.alt-contact p{margin:0;color:var(--on-dark-3);font-size:14px}
+.alt-contact .buttons{display:flex;gap:10px;flex-wrap:wrap}
+.scheduler{background:var(--white);color:var(--ink);min-height:700px;position:relative}
+.scheduler .calendly-inline-widget{height:700px;min-width:300px}
+.scheduler-fallback{position:absolute;inset:0;display:grid;place-content:center;gap:16px;text-align:center;padding:24px}
+.scheduler-fallback p{margin:0;color:var(--graphite)}
+.scheduler.loaded .scheduler-fallback{display:none}
+@media (max-width:900px){.book-text{position:static}}
+
+/* FAQ */
+.faq-section{padding-top:var(--section);padding-bottom:var(--section)}
+.faq-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,96px);align-items:start}
+.faq{border-top:1px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;font-size:17px;font-weight:600}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-size:18px;font-weight:400;line-height:1;transition:transform .2s}
+.faq summary::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/12px 1.5px no-repeat,linear-gradient(currentColor,currentColor) center/1.5px 12px no-repeat;transition:transform .2s}
 .faq details[open] summary::after{transform:rotate(45deg)}
-.faq p{margin:14px 0 0;font-size:14px;color:var(--muted)}
-/* refer + footer */
-.refer{border-top:1px solid var(--rule)}
-.refer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:36px;padding-bottom:36px}
-.refer-text{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
-.refer-text strong{font-family:var(--serif);font-size:clamp(20px,2vw,28px);font-weight:500;letter-spacing:.02em;text-transform:uppercase}
-footer{overflow:hidden}
-.foot-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px;padding-top:clamp(56px,6vw,80px)}
-.foot-cols div{display:flex;flex-direction:column;gap:8px;font-size:13px}
-.foot-cols .label{font-size:10px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--on-dark-muted);margin-bottom:6px}
-.foot-cols a{text-decoration:none}
-.foot-cols span{color:#BDB9B2}
-.legal{margin-top:48px;padding-top:22px;border-top:1px solid #2E2D2B;display:flex;flex-direction:column;gap:10px;font-size:11px;line-height:1.7;color:var(--on-dark-muted)}
+.faq p{margin:0 0 22px;color:#3E3B37;max-width:36em}
+
+/* Footer */
+.site-footer{background:var(--ink);color:var(--on-dark);overflow:hidden}
+.refer{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:48px;padding-bottom:48px;border-bottom:1px solid var(--dark-rule)}
+.refer p{margin:0;font-family:var(--serif);font-size:clamp(24px,2.4vw,34px);line-height:1.15;max-width:18em}
+.refer-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.refer-status{font-size:14px;color:var(--on-dark-3);min-width:1px}
+.foot-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px;padding-top:56px}
+.foot-cols h2{margin:0 0 10px;font-size:13px;font-weight:600;color:var(--on-dark-3)}
+.foot-cols ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px}
+.foot-cols a{text-decoration:none}.foot-cols a:hover{text-decoration:underline}
+.foot-cols li span{color:var(--on-dark-2)}
+.legal{margin-top:48px;padding-top:24px;border-top:1px solid var(--dark-rule);display:grid;gap:10px;font-size:13px;line-height:1.7;color:var(--on-dark-3);max-width:1000px}
 .legal p{margin:0}
-.giant{margin-top:32px;font-family:var(--serif);font-size:clamp(56px,11.5vw,176px);font-weight:500;line-height:.8;letter-spacing:-.02em;text-transform:uppercase;color:#242321;white-space:nowrap;transform:translateY(12%)}
+.giant{margin-top:40px;font-family:var(--serif);font-size:clamp(56px,11.5vw,176px);font-weight:500;line-height:.8;letter-spacing:-.02em;text-transform:uppercase;color:#242321;white-space:nowrap;transform:translateY(12%)}
+
+/* Mobile action bar */
+.action-bar{display:none}
+@media (max-width:760px){
+  .action-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:45;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(17,17,17,.97);border-top:1px solid var(--dark-rule)}
+  .action-bar .btn{min-height:48px;padding:0 12px}
+  body{padding-bottom:76px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-mark .draw{stroke-dasharray:none;stroke-dashoffset:0;animation:none}
+  .hero-mark .guides,.hero-mark .badge{animation:none}
+  *{transition:none !important}
+}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<div class="topbar dark">
+<div class="topbar">
 <div class="wrap">
-<span>Free quotes · Licensed in 31 states</span>
-<span><a href="tel:+18134510821">(813) 451-0821</a> · <a href="https://nipr.com" style="text-decoration:underline">Verify NPN 22297742</a></span>
+<span>Free quotes. Licensed in 31 states.</span>
+<span><a href="tel:+18134510821">(813) 451-0821</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="https://nipr.com">Verify NPN 22297742</a></span>
 </div>
 </div>
 
-<header class="site-header">
-<div class="wrap nav">
-<nav aria-label="Primary">
-<a href="#how">How it works</a>
+<header class="site-header" data-open="false">
+<div class="wrap header-row">
+<a class="brand" href="#top" aria-label="Aiden James Health, back to top">
+<svg viewBox="170 140 220 290" aria-hidden="true"><g fill="none" stroke="#E8E6E1" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"><path d="M190 340 L280 160"/><path d="M280 160 V372 Q280 410 244 410 Q216 410 212 386"/><path d="M225 270 H370"/><path d="M370 160 V340"/></g><rect x="254" y="244" width="52" height="52" fill="#E8E6E1"/><rect x="274.5" y="253" width="11" height="34" fill="#111111"/><rect x="263" y="264.5" width="34" height="11" fill="#111111"/></svg>
+<span>Aiden James</span>
+</a>
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+<nav class="primary-nav" id="primary-nav" aria-label="Primary">
 <a href="#who">Who I help</a>
-<a href="#compare">Plans</a>
-</nav>
-<a class="wordmark" href="#top" aria-label="Aiden James Health, home"><svg width="30" height="40" viewBox="170 140 220 290" aria-hidden="true" style="display:block"><g fill="none" stroke="#E8E6E1" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"><path d="M190 340 L280 160"/><path d="M280 160 V372 Q280 410 244 410 Q216 410 212 386"/><path d="M225 270 H370"/><path d="M370 160 V340"/></g><rect x="254" y="244" width="52" height="52" fill="#E8E6E1"/><rect x="274.5" y="253" width="11" height="34" fill="#111111"/><rect x="263" y="264.5" width="34" height="11" fill="#111111"/></svg></a>
-<nav class="right" aria-label="Secondary">
+<a href="#how">How it works</a>
+<a href="#plans">Plans</a>
 <a href="#about">About</a>
 <a href="#faq">FAQ</a>
 <a class="btn btn-light" href="#book">Book a call</a>
@@ -172,184 +276,198 @@ footer{overflow:hidden}
 </div>
 </header>
 
-<main>
-<section id="top" class="hero-dark">
-<div class="wrap hero2">
-<div class="hero-top">
-<div class="stack caps"><p>Health coverage
-that moves
-with you.</p><div class="rule"></div></div>
-<div class="stack right caps"><p>Licensed in
-31 states
-NPN 22297742</p><div class="rule"></div></div>
-</div>
-<div class="hero2-brand">
+<main id="main">
+<section id="top" class="hero">
+<div class="wrap hero-inner">
+<div class="hero-brand">
 <svg class="hero-mark" viewBox="150 140 300 290" aria-hidden="true">
-<g fill="none" stroke="#E8E6E1">
+<g class="guides" fill="none" stroke="#E8E6E1">
 <circle cx="280" cy="270" r="118" stroke-width="5" stroke-dasharray="0.7 9.597" transform="rotate(-90 280 270)"/>
 <circle cx="280" cy="270" r="112" stroke-width="0.6" opacity="0.7"/>
 <line x1="150" y1="270" x2="450" y2="270" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.7"/>
 <line x1="280" y1="140" x2="280" y2="430" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.7"/>
 <line x1="160" y1="340" x2="410" y2="340" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.7"/>
 <path d="M230 340 A40 40 0 0 0 207.9 304.2" stroke-width="0.8"/>
+<text x="236" y="322" font-family="Montserrat, system-ui, sans-serif" font-size="8" font-weight="600" letter-spacing="2" fill="#A8A49D" stroke="none">63.4°</text>
 </g>
-<text x="236" y="322" font-family="Montserrat, system-ui, sans-serif" font-size="8" font-weight="600" letter-spacing="2" fill="#A8A49D">63.4°</text>
 <g fill="none" stroke="#E8E6E1" stroke-width="12" stroke-linecap="square" stroke-linejoin="miter">
-<path d="M190 340 L280 160"/>
-<path d="M280 160 V372 Q280 410 244 410 Q216 410 212 386"/>
-<path d="M225 270 H370"/>
-<path d="M370 160 V340"/>
+<path class="draw d1" pathLength="1" d="M190 340 L280 160"/>
+<path class="draw d2" pathLength="1" d="M280 160 V372 Q280 410 244 410 Q216 410 212 386"/>
+<path class="draw d3" pathLength="1" d="M225 270 H370"/>
+<path class="draw d4" pathLength="1" d="M370 160 V340"/>
 </g>
+<g class="badge">
 <rect x="258" y="248" width="44" height="44" fill="#E8E6E1"/>
 <rect x="275.5" y="256" width="9" height="28" fill="#111111"/>
 <rect x="266" y="265.5" width="28" height="9" fill="#111111"/>
+</g>
 </svg>
 <div class="hero-wordmark">
 <h1><span class="wm-name">Aiden James</span><span class="wm-health">Health</span></h1>
-<p class="wm-tag">Licensed Health &amp; Life Insurance Advisor · Tampa, Florida</p>
+<p class="wm-tag">Licensed health and life insurance advisor in Tampa, Florida</p>
 </div>
 </div>
 <div class="ruler" aria-hidden="true"></div>
-<div class="hero2-bottom">
-<p>Private health coverage for the self-employed, families, business owners, and anyone leaving a job. Real quotes, honest advice.</p>
-<div class="actions">
-<a class="btn btn-light" href="#book">Book a call</a>
-<a class="link" href="#quote">Get a quote</a>
+<div class="hero-bottom">
+<p class="lead">Private health coverage for the self-employed, families, business owners, and anyone leaving a job. Real quotes and honest advice, from one advisor who stays with you.</p>
+<div class="hero-cta">
+<div class="buttons">
+<a class="btn btn-light" href="#book">Book a free call</a>
+<a class="btn btn-ghost-dark" href="sms:+18134510821">Text me</a>
+</div>
+<small>15 minutes, by phone or Zoom. No obligation.</small>
 </div>
 </div>
 </div>
 </section>
 
-<section id="who" class="who-band">
-<div class="wrap who">
-<article><div class="num">01</div><h2>Self-employed</h2><p>Private PPOs with nationwide networks, built around work that doesn’t come with a benefits package.</p><a href="#quote">Get a quote →</a></article>
-<article><div class="num">02</div><h2>Families</h2><p>When adding your family to an employer plan costs too much, there are often better options.</p><a href="#quote">Get a quote →</a></article>
-<article><div class="num">03</div><h2>Leaving a job</h2><p>COBRA isn’t your only option. See how private and Marketplace plans compare before you pay for it.</p><a href="#quote">Get a quote →</a></article>
-<article><div class="num">04</div><h2>Small business</h2><p>Group coverage for small teams that helps you hire and keep great people, no HR department required.</p><a href="#quote">Get a quote →</a></article>
+<section class="cred" aria-label="Why clients trust Aiden James Health">
+<div class="wrap">
+<div class="cred-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><div><strong>Licensed in 31 states</strong><span>NPN 22297742, verifiable on NIPR</span></div></div>
+<div class="cred-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9.5c0-1.4 1.3-2.5 3-2.5s3 1 3 2.3c0 2.9-6 1.7-6 4.7 0 1.3 1.3 2.5 3 2.5s3-1.1 3-2.5"/><path d="M12 5.5v1.5M12 17v1.5"/></svg><div><strong>Free to work with me</strong><span>Advice and quotes cost nothing</span></div></div>
+<div class="cred-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z"/></svg><div><strong>Nationwide networks</strong><span>Coverage on or off the job</span></div></div>
+<div class="cred-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><div><strong>One point of contact</strong><span>Before and after you enroll</span></div></div>
+</div>
+</section>
+
+<section id="who" class="who">
+<div class="wrap">
+<div class="section-head">
+<h2 class="h2">Who I help</h2>
+<p class="lead">Most of my clients don’t have an employer choosing their coverage for them. That’s where the right advice makes the biggest difference.</p>
+</div>
+<div class="who-grid">
+<article class="who-card"><h3 class="h3">Self-employed</h3><p>Private PPOs with nationwide networks, built around work that doesn’t come with a benefits package.</p><a class="text-link" href="#book">See my options</a></article>
+<article class="who-card"><h3 class="h3">Families</h3><p>When adding your family to an employer plan costs too much, there are often better options.</p><a class="text-link" href="#book">Compare family plans</a></article>
+<article class="who-card"><h3 class="h3">Leaving a job</h3><p>COBRA isn’t your only choice. See how private and Marketplace plans compare before you pay for it.</p><a class="text-link" href="#book">Compare with COBRA</a></article>
+<article class="who-card"><h3 class="h3">Small business owners</h3><p>Group coverage for small teams that helps you hire and keep great people, without an HR department.</p><a class="text-link" href="#book">Explore group coverage</a></article>
+</div>
+</div>
+</section>
+
+<section id="how" class="steps-section">
+<div class="wrap">
+<div class="section-head">
+<h2 class="h2">How it works</h2>
+<p class="lead">Four steps, from first call to long after you’ve enrolled.</p>
+</div>
+<ol class="steps">
+<li><h3>A quick call</h3><p>Fifteen minutes on who needs coverage, your budget, and the doctors you want to keep.</p></li>
+<li><h3>A short list</h3><p>Two or three plans you’re likely to qualify for, compared side by side in plain language.</p></li>
+<li><h3>Enroll together</h3><p>I walk you through the application so nothing gets missed and nothing surprises you.</p></li>
+<li><h3>Support after</h3><p>Claims, bills, renewals. You call me, not a hotline.</p></li>
+</ol>
 </div>
 </section>
 
 <section id="about" class="about">
-<div class="wrap">
+<div class="wrap about-inner">
 <div class="about-text">
-<div class="caps">Meet your advisor</div>
-<h2 class="display">Honest<br>advice.</h2>
+<h2 class="h2">Honest advice.</h2>
 <p class="promise">If the plan you already have is your best option, I’ll tell you to keep it.</p>
-<p class="bio">I’m Aiden James, a licensed health and life insurance advisor in Tampa. I came up through client-facing skincare and medical esthetics, and I work the same way: listen first, explain clearly, recommend only what fits.</p>
-<div class="actions"><a class="btn" href="#book">Book a call</a><a class="link" href="https://nipr.com">Verify my license</a></div>
+<p class="lead">I’m Aiden James, a licensed health and life insurance advisor in Tampa. I came up through client-facing skincare and medical esthetics, and I work the same way now: listen first, explain clearly, and recommend only what fits your health, budget, and life.</p>
+<div class="about-actions"><a class="btn" href="#book">Book a free call</a><a class="text-link" href="https://nipr.com">Verify my license on NIPR</a></div>
 </div>
-<img src="/images/aiden-james.jpg" alt="Aiden James, licensed health insurance advisor" width="675" height="1200" loading="lazy">
+<figure><img src="/images/aiden-james.jpg" alt="Aiden James" width="675" height="1200" loading="lazy" decoding="async"></figure>
 </div>
 </section>
 
-<section class="trust">
+<section id="plans" class="compare">
 <div class="wrap">
-<div class="trust-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><div><strong>Licensed in 31 states</strong><span>NPN 22297742</span></div></div>
-<div class="trust-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9.5c0-1.4 1.3-2.5 3-2.5s3 1 3 2.3c0 2.9-6 1.7-6 4.7 0 1.3 1.3 2.5 3 2.5s3-1.1 3-2.5"/><path d="M12 5.5v1.5M12 17v1.5"/></svg><div><strong>$0 to work with me</strong><span>Advice and quotes are free</span></div></div>
-<div class="trust-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z"/></svg><div><strong>Nationwide networks</strong><span>On or off the job</span></div></div>
-<div class="trust-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><div><strong>One point of contact</strong><span>Before and after you enroll</span></div></div>
+<div class="section-head">
+<h2 class="h2">Four ways to get covered</h2>
+<p class="lead">The short version of each option. On our call, I’ll show you real plans and prices for your situation.</p>
+</div>
+<div class="plans">
+<article class="plan"><h3 class="h3">Private PPO</h3><p>Off-exchange plans that often cost less for people in good health.</p><dl><div><dt>Best for</dt><dd>Healthy self-employed people and families</dd></div><div><dt>Doctors</dt><dd>Often nationwide networks, no referrals</dd></div><div><dt>Health questions</dt><dd>Usually, which can mean lower premiums</dd></div><div><dt>Enrollment</dt><dd>Often any time of year</dd></div></dl></article>
+<article class="plan"><h3 class="h3">Marketplace</h3><p>ACA plans, with savings available based on income.</p><dl><div><dt>Best for</dt><dd>Anyone, especially if you qualify for income-based savings</dd></div><div><dt>Doctors</dt><dd>Varies by plan, often regional</dd></div><div><dt>Health questions</dt><dd>None. Pre-existing conditions are covered</dd></div><div><dt>Enrollment</dt><dd>Open enrollment or after a qualifying life event</dd></div></dl></article>
+<article class="plan"><h3 class="h3">Group</h3><p>Employer plans for small businesses and their teams.</p><dl><div><dt>Best for</dt><dd>Businesses covering employees</dd></div><div><dt>Doctors</dt><dd>Varies by carrier and plan</dd></div><div><dt>Health questions</dt><dd>Depends on the group and carrier</dd></div><div><dt>Enrollment</dt><dd>When the business sets up its plan</dd></div></dl></article>
+<article class="plan"><h3 class="h3">Supplemental</h3><p>Extra protection that sits on top of your main plan.</p><dl><div><dt>Best for</dt><dd>Covering gaps like accidents or hospital stays</dd></div><div><dt>Doctors</dt><dd>Pays cash benefits you can use anywhere</dd></div><div><dt>Health questions</dt><dd>Varies by product</dd></div><div><dt>Enrollment</dt><dd>Often any time of year</dd></div></dl></article>
+</div>
+<p class="compare-note">Plans are offered by third-party carriers, which set final terms, pricing, and availability.</p>
 </div>
 </section>
 
-<section id="how" class="wrap section">
-<div class="row-head"><h2 class="h-sm">How it works</h2><a class="link" href="#book">Start now</a></div>
-<div class="steps">
-<div class="step"><div class="n">01</div><h3>A quick call</h3><p>Fifteen minutes on who needs coverage, your budget, and the doctors you want to keep.</p></div>
-<div class="step"><div class="n">02</div><h3>A short list</h3><p>Two or three plans you’re likely to qualify for, compared side by side in plain language.</p></div>
-<div class="step"><div class="n">03</div><h3>Enroll together</h3><p>I walk you through the application so nothing gets missed and nothing surprises you.</p></div>
-<div class="step"><div class="n">04</div><h3>Support after</h3><p>Claims, bills, renewals. You call me, not a hotline.</p></div>
+<section id="states" class="states">
+<div class="wrap states-inner">
+<div class="states-text">
+<h2 class="h2">Licensed in 31 states.</h2>
+<p class="lead">Check your state below. If I’m not licensed there yet, I’ll personally connect you with a licensed partner I trust.</p>
+<div class="field">
+<label for="state-select">Your state</label>
+<select id="state-select"><option value="">Choose a state</option></select>
 </div>
-</section>
-
-<section id="quote" class="dark">
-<div class="wrap section split">
-<div class="stack" style="gap:22px">
-<div class="caps" style="color:var(--on-dark-muted)">Free quote</div>
-<h2 class="display">Real plans.<br>Real prices.</h2>
-<p style="margin:0;color:#BDB9B2;max-width:440px">Tell me who needs coverage and I’ll come back with actual pricing for your situation, not a ballpark. No cost, no obligation.</p>
+<p class="state-result" id="state-result" aria-live="polite">Choose your state, or tap it on the map.</p>
+<div class="legend"><span><i style="background:#111"></i>Licensed</span><span><i style="border:1px solid #A8A49D"></i>Trusted partner</span></div>
 </div>
-<div class="quote-options">
-<a href="#book"><strong>Book a 15-minute call</strong><span>Pick a time online →</span></a>
-<a href="sms:+18134510821"><strong>Text me</strong><span>(813) 451-0821 →</span></a>
-<a href="tel:+18134510821"><strong>Call me</strong><span>(813) 451-0821 →</span></a>
-<a href="mailto:ajh@aidenjameshealth.us?subject=Quote%20request&amp;body=Name%3A%0AZIP%20code%3A%0AWho%20needs%20coverage%3A%0ABest%20time%20to%20reach%20me%3A"><strong>Email me</strong><span>ajh@aidenjameshealth.us →</span></a>
-</div>
-</div>
-</section>
-
-<section id="compare" class="wrap section">
-<div class="row-head"><h2 class="h-sm">Compare plans</h2><div class="caps" style="font-size:10px;letter-spacing:.22em;color:var(--muted)">The short version. Details on our call.</div></div>
-<div class="table-wrap">
-<table>
-<thead><tr><th></th><th>Private PPO</th><th>Marketplace</th><th>Group</th><th>Supplemental</th></tr></thead>
-<tbody>
-<tr><th scope="row">Best for</th><td>Healthy self-employed people and families</td><td>Anyone, especially if you qualify for income-based savings</td><td>Businesses covering employees</td><td>Extra protection on top of a main plan</td></tr>
-<tr><th scope="row">Doctors</th><td>Often nationwide networks, no referrals</td><td>Varies by plan, often regional</td><td>Varies by carrier and plan</td><td>Pays cash benefits you can use anywhere</td></tr>
-<tr><th scope="row">Health questions</th><td>Usually, which can mean lower premiums</td><td>None. Pre-existing conditions covered</td><td>Depends on the group and carrier</td><td>Varies by product</td></tr>
-<tr><th scope="row">Enrollment</th><td>Often any time of year</td><td>Open enrollment or after a qualifying life event</td><td>When the business sets up its plan</td><td>Often any time of year</td></tr>
-</tbody>
-</table>
-</div>
-</section>
-
-<section id="states" class="wrap section" style="padding-top:0">
-<div class="split" style="align-items:center">
-<div class="stack" style="gap:22px">
-<div class="caps">Where I’m licensed</div>
-<h2 class="display">31<br>states.</h2>
-<p style="margin:0;font-size:14px;color:var(--muted);max-width:420px">Tap your state. Not licensed there yet? I’ll personally connect you with a licensed partner I trust.</p>
-<div class="state-msg" id="state-msg" aria-live="polite">Select your state</div>
-<div class="legend"><span><i style="background:var(--ink)"></i>Licensed</span><span><i style="border:1px solid var(--on-dark-muted)"></i>Trusted partner</span></div>
-</div>
-<div class="tilemap" id="tilemap" aria-label="Map of US states, licensed states filled in black"></div>
+<div class="tilemap" id="tilemap" role="group" aria-label="Map of US states. Licensed states are filled in black."></div>
 </div>
 </section>
 
 <section id="book" class="book">
-<div class="wrap section split">
-<div class="stack" style="gap:22px">
-<div class="caps">15 minutes · Phone or Zoom</div>
-<h2 class="display">Book<br>a call.</h2>
-<p style="margin:0;font-size:14px;color:var(--muted);max-width:420px">Pick a time that works for you. I’ll review your details beforehand so we can make the most of it. Free, and no obligation.</p>
-<a class="link" href="https://calendly.com/aidenjameshealth/ajh" target="_blank" rel="noopener">Open the booking page in a new tab</a>
+<div class="wrap book-inner">
+<div class="book-text">
+<h2 class="h2">Book a free call.</h2>
+<p class="lead">Pick a time that works for you. I’ll review your details beforehand, so we can spend the call on real options and real prices.</p>
+<dl class="facts">
+<div><dt>Length</dt><dd>15 minutes</dd></div>
+<div><dt>Where</dt><dd>Phone or Zoom</dd></div>
+<div><dt>Cost</dt><dd>Free, no obligation</dd></div>
+</dl>
+<div class="alt-contact">
+<p>Prefer not to book online?</p>
+<div class="buttons">
+<a class="btn btn-ghost-dark" href="sms:+18134510821">Text me</a>
+<a class="btn btn-ghost-dark" href="tel:+18134510821">Call me</a>
+<a class="btn btn-ghost-dark" href="mailto:ajh@aidenjameshealth.us?subject=Quote%20request&amp;body=Name%3A%0AZIP%20code%3A%0AWho%20needs%20coverage%3A%0ABest%20time%20to%20reach%20me%3A">Email me</a>
 </div>
+</div>
+</div>
+<div class="scheduler" id="scheduler">
 <div class="calendly-inline-widget" data-url="https://calendly.com/aidenjameshealth/ajh?hide_gdpr_banner=1&amp;background_color=ffffff&amp;text_color=111111&amp;primary_color=111111"></div>
+<div class="scheduler-fallback">
+<p>Loading available times.</p>
+<a class="btn" href="https://calendly.com/aidenjameshealth/ajh" target="_blank" rel="noopener">Open the booking page</a>
+</div>
+</div>
 </div>
 </section>
 
-<section id="faq" class="wrap section split">
-<div class="stack" style="gap:18px">
-<h2 class="display">FAQ.</h2>
-<p style="margin:0;font-size:14px;color:var(--muted)">Still wondering? Call or text <a href="tel:+18134510821">(813) 451-0821</a>.</p>
+<section id="faq" class="faq-section">
+<div class="wrap faq-inner">
+<div class="section-head" style="margin-bottom:0">
+<h2 class="h2">Questions, answered</h2>
+<p class="lead">Don’t see yours? Call or text <a class="text-link" href="tel:+18134510821">(813) 451-0821</a>.</p>
 </div>
 <div class="faq">
-<details><summary>Why use an advisor?</summary><p>I can see options across carriers, including private plans that don’t appear on the Marketplace, and narrow them to the few that actually fit. You get the full picture without the hours of research.</p></details>
-<details><summary>What about pre-existing conditions?</summary><p>Tell me upfront. Marketplace plans can’t turn you down or charge more for pre-existing conditions. Some private plans ask health questions, so I’ll match you with plans that fit your history.</p></details>
+<details><summary>Why use an advisor instead of shopping on my own?</summary><p>I can see options across carriers, including private plans that don’t appear on the Marketplace, and narrow them down to the few that actually fit. You get the full picture without the hours of research.</p></details>
+<details><summary>What if I have a pre-existing condition?</summary><p>Tell me upfront. Marketplace plans can’t turn you down or charge more for pre-existing conditions. Some private plans ask health questions, so I’ll match you with plans that fit your history.</p></details>
 <details><summary>Can I keep my doctors?</summary><p>Often, yes. Many PPO plans let you see doctors nationwide without referrals, and I confirm your doctors and hospitals are in network before you apply.</p></details>
 <details><summary>Do I have to wait for open enrollment?</summary><p>Not always. Many private plans accept applications year-round, and life events like losing coverage, moving, or having a baby can open a special enrollment window for Marketplace plans.</p></details>
-<details><summary>What does it cost?</summary><p>Nothing. My advice and quotes are free. I’m paid by the insurance carrier when you enroll, not by you.</p></details>
+<details><summary>What does it cost to work with you?</summary><p>Nothing. My advice and quotes are free. I’m paid by the insurance carrier when you enroll, not by you.</p></details>
 <details><summary>What happens after I enroll?</summary><p>I stay your point of contact. Claims, billing, and renewal questions come straight to me.</p></details>
 </div>
-</section>
-
-<section class="refer">
-<div class="wrap">
-<div class="refer-text"><span class="caps" style="color:var(--muted)">Refer a friend</span><strong>Know someone overpaying for coverage?</strong></div>
-<a class="btn" href="#quote">Send them my way</a>
 </div>
 </section>
 </main>
 
-<footer class="dark">
+<footer class="site-footer">
 <div class="wrap">
+<div class="refer">
+<p>Know someone who’s overpaying for coverage? Send them my way.</p>
+<div class="refer-actions">
+<button class="btn btn-light" type="button" id="share-btn">Share this site</button>
+<span class="refer-status" id="share-status" aria-live="polite"></span>
+</div>
+</div>
 <div class="foot-cols">
-<div><span class="label">Aiden James Health</span><span>Licensed Health &amp; Life Insurance Advisor</span><span>Tampa, Florida</span></div>
-<div><span class="label">Explore</span><a href="#how">How it works</a><a href="#who">Who I help</a><a href="#compare">Compare plans</a><a href="#faq">FAQ</a></div>
-<div><span class="label">Contact</span><a href="tel:+18134510821">(813) 451-0821</a><a href="mailto:ajh@aidenjameshealth.us">ajh@aidenjameshealth.us</a><a href="#book" style="text-decoration:underline">Book a call</a></div>
-<div><span class="label">Credentials</span><span>NPN 22297742</span><a href="https://nipr.com" style="text-decoration:underline">Verify on NIPR</a></div>
+<div><h2>Aiden James Health</h2><ul><li><span>Licensed health and life insurance advisor</span></li><li><span>Tampa, Florida</span></li></ul></div>
+<div><h2>Explore</h2><ul><li><a href="#who">Who I help</a></li><li><a href="#how">How it works</a></li><li><a href="#plans">Compare plans</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+<div><h2>Contact</h2><ul><li><a href="tel:+18134510821">(813) 451-0821</a></li><li><a href="mailto:ajh@aidenjameshealth.us">ajh@aidenjameshealth.us</a></li><li><a href="#book">Book a call</a></li></ul></div>
+<div><h2>Credentials</h2><ul><li><span>NPN 22297742</span></li><li><a href="https://nipr.com">Verify on NIPR</a></li></ul></div>
 </div>
 <div class="legal">
-<p>Licensed in AL, AR, CO, DE, FL, GA, IA, IL, IN, KS, KY, LA, MD, MI, MO, MS, MT, NC, NE, NV, OH, OK, SC, SD, TN, TX, UT, VA, WI, WV, WY.</p>
+<p>Licensed in AL, AR, CO, DE, FL, GA, IA, IL, IN, KS, KY, LA, MD, MI, MO, MS, MT, NC, NE, NV, OH, OK, SC, SD, TN, TX, UT, VA, WI, WV, and WY.</p>
 <p>Aiden James Health is an independent insurance agency and is not affiliated with or endorsed by any government agency, Medicare, Medicaid, or the federal Health Insurance Marketplace. Plans are underwritten by third-party insurance carriers, which set final terms, pricing, and availability. I am compensated by carriers for plans I help place.</p>
 <p>© <span id="year">2026</span> Aiden James Health</p>
 </div>
@@ -357,29 +475,94 @@ NPN 22297742</p><div class="rule"></div></div>
 </div>
 </footer>
 
+<div class="action-bar" aria-label="Quick actions">
+<a class="btn btn-light" href="#book">Book a call</a>
+<a class="btn btn-ghost-dark" href="sms:+18134510821">Text me</a>
+</div>
+
 <script>
-(function(){
-  var states=[['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
-  var licensed=['AL','AR','CO','DE','FL','GA','IA','IL','IN','KS','KY','LA','MD','MI','MO','MS','MT','NC','NE','NV','OH','OK','SC','SD','TN','TX','UT','VA','WI','WV','WY'];
-  var pos={AK:[0,0],ME:[10,0],VT:[9,1],NH:[10,1],WA:[0,2],ID:[1,2],MT:[2,2],ND:[3,2],MN:[4,2],IL:[5,2],WI:[6,2],MI:[7,2],NY:[8,2],RI:[9,2],MA:[10,2],OR:[0,3],NV:[1,3],WY:[2,3],SD:[3,3],IA:[4,3],IN:[5,3],OH:[6,3],PA:[7,3],NJ:[8,3],CT:[9,3],CA:[0,4],UT:[1,4],CO:[2,4],NE:[3,4],MO:[4,4],KY:[5,4],WV:[6,4],VA:[7,4],MD:[8,4],DE:[9,4],AZ:[1,5],NM:[2,5],KS:[3,5],AR:[4,5],TN:[5,5],NC:[6,5],SC:[7,5],DC:[8,5],OK:[3,6],LA:[4,6],MS:[5,6],AL:[6,6],GA:[7,6],HI:[0,7],TX:[3,7],FL:[8,7]};
-  var map=document.getElementById('tilemap'), msg=document.getElementById('state-msg');
-  states.forEach(function(s){
-    var code=s[0], name=s[1], lic=licensed.indexOf(code)!==-1, p=pos[code];
-    var b=document.createElement('button');
-    b.type='button'; b.className='tile'+(lic?' lic':''); b.textContent=code;
-    b.style.gridColumn=(p[0]+1); b.style.gridRow=(p[1]+1);
-    b.setAttribute('aria-label', name+(lic?', licensed':', trusted partner'));
-    b.setAttribute('aria-pressed','false');
-    b.addEventListener('click',function(){
-      map.querySelectorAll('.tile').forEach(function(t){t.setAttribute('aria-pressed','false');});
-      b.setAttribute('aria-pressed','true');
-      msg.textContent = lic ? name+': licensed. Let’s talk.' : name+': I’ll connect you with a trusted partner.';
-    });
-    map.appendChild(b);
+(function () {
+  // Mobile menu
+  var header = document.querySelector('.site-header');
+  var menuBtn = document.querySelector('.menu-btn');
+  var nav = document.getElementById('primary-nav');
+  function setMenu(open) {
+    header.setAttribute('data-open', open ? 'true' : 'false');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.textContent = open ? 'Close' : 'Menu';
+  }
+  menuBtn.addEventListener('click', function () { setMenu(header.getAttribute('data-open') !== 'true'); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  // State checker: dropdown + tile map share one selection
+  var states = [['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
+  var licensed = ['AL','AR','CO','DE','FL','GA','IA','IL','IN','KS','KY','LA','MD','MI','MO','MS','MT','NC','NE','NV','OH','OK','SC','SD','TN','TX','UT','VA','WI','WV','WY'];
+  var pos = {AK:[0,0],ME:[10,0],VT:[9,1],NH:[10,1],WA:[0,2],ID:[1,2],MT:[2,2],ND:[3,2],MN:[4,2],IL:[5,2],WI:[6,2],MI:[7,2],NY:[8,2],RI:[9,2],MA:[10,2],OR:[0,3],NV:[1,3],WY:[2,3],SD:[3,3],IA:[4,3],IN:[5,3],OH:[6,3],PA:[7,3],NJ:[8,3],CT:[9,3],CA:[0,4],UT:[1,4],CO:[2,4],NE:[3,4],MO:[4,4],KY:[5,4],WV:[6,4],VA:[7,4],MD:[8,4],DE:[9,4],AZ:[1,5],NM:[2,5],KS:[3,5],AR:[4,5],TN:[5,5],NC:[6,5],SC:[7,5],DC:[8,5],OK:[3,6],LA:[4,6],MS:[5,6],AL:[6,6],GA:[7,6],HI:[0,7],TX:[3,7],FL:[8,7]};
+  var map = document.getElementById('tilemap');
+  var select = document.getElementById('state-select');
+  var result = document.getElementById('state-result');
+  var tiles = {};
+  function choose(code) {
+    Object.keys(tiles).forEach(function (c) { tiles[c].setAttribute('aria-pressed', c === code ? 'true' : 'false'); });
+    select.value = code || '';
+    if (!code) { result.textContent = 'Choose your state, or tap it on the map.'; return; }
+    var name = states.filter(function (s) { return s[0] === code; })[0][1];
+    if (licensed.indexOf(code) !== -1) {
+      result.innerHTML = 'I’m licensed in ' + name + '. <a href="#book">Book your free call</a>.';
+    } else {
+      result.innerHTML = 'I’m not licensed in ' + name + ' yet, but I’ll connect you with a licensed partner I trust. <a href="#book">Book a call</a> and I’ll make the introduction.';
+    }
+  }
+  states.forEach(function (s) {
+    var code = s[0], name = s[1], lic = licensed.indexOf(code) !== -1, p = pos[code];
+    var opt = document.createElement('option');
+    opt.value = code; opt.textContent = name; select.appendChild(opt);
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'tile' + (lic ? ' lic' : ''); b.textContent = code;
+    b.style.gridColumn = p[0] + 1; b.style.gridRow = p[1] + 1;
+    b.setAttribute('aria-label', name + (lic ? ', licensed' : ', trusted partner'));
+    b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', function () { choose(code); });
+    tiles[code] = b; map.appendChild(b);
   });
-  document.getElementById('year').textContent=new Date().getFullYear();
+  select.addEventListener('change', function () { choose(select.value); });
+
+  // Load the Calendly scheduler only when the booking section gets close
+  var scheduler = document.getElementById('scheduler');
+  var loaded = false;
+  function loadCalendly() {
+    if (loaded) return; loaded = true;
+    var s = document.createElement('script');
+    s.src = 'https://assets.calendly.com/assets/external/widget.js';
+    s.async = true;
+    s.onload = function () { scheduler.classList.add('loaded'); };
+    document.body.appendChild(s);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) { loadCalendly(); io.disconnect(); }
+    }, { rootMargin: '800px 0px' });
+    io.observe(scheduler);
+  } else { loadCalendly(); }
+  document.querySelectorAll('a[href="#book"]').forEach(function (a) { a.addEventListener('click', loadCalendly); });
+
+  // Referral sharing
+  var shareBtn = document.getElementById('share-btn');
+  var shareStatus = document.getElementById('share-status');
+  shareBtn.addEventListener('click', function () {
+    var data = { title: 'Aiden James Health', text: 'Aiden James helps people compare health insurance options. Free 15-minute call.', url: location.origin + '/' };
+    if (navigator.share) {
+      navigator.share(data).catch(function () {});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(data.url).then(function () { shareStatus.textContent = 'Link copied. Paste it in a text or email.'; });
+    } else {
+      shareStatus.textContent = 'Share this link: ' + data.url;
+    }
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
 })();
 </script>
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
