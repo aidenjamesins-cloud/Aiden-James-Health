@@ -360,6 +360,36 @@ button{font:inherit}
 /* Share row in the footer */
 .share-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .share-row .btn{min-height:46px;padding:0 20px}
+
+/* ---- Bodoni display style, matching the footer wordmark ---- */
+/* Highest-contrast cut of Bodoni Moda (hairline thins, heavy stems) for display text */
+.h2,.wm-name,.hero-q,.promise,.quote-card h2,.refer p,.giant{font-variation-settings:"opsz" 96}
+.h2{font-weight:500}
+
+/* Giant tonal lettering, cropped by the section edge, like the footer */
+.has-bg-word{position:relative;overflow:hidden}
+.has-bg-word > .wrap{position:relative;z-index:1}
+.bg-word{position:absolute;left:0;right:0;z-index:0;margin:0;padding:0 var(--pad);font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 96;line-height:.8;letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap;pointer-events:none;user-select:none}
+.about .bg-word{bottom:0;text-align:right;font-size:clamp(110px,24vw,360px);color:#CBC7C0;transform:translateY(16%)}
+@media (max-width:760px){
+  .about .bg-word{text-align:center;padding:0;font-size:34vw;transform:translateY(12%)}
+  .about figure{width:min(72%,280px);margin-left:auto;margin-right:auto}
+}
+.compare-band .bg-word{top:0;font-size:clamp(96px,19vw,300px);color:#242321;transform:translateY(-24%)}
+.states .bg-word{top:0;text-align:right;font-size:clamp(170px,30vw,460px);color:#DCD9D3;transform:translateY(-30%)}
+.states{padding-top:var(--section)}
+.states .tile:not(.lic){background:var(--paper)}
+.states .tile[aria-pressed="true"]{background:var(--white)}
+
+/* Bodoni for more of the page */
+.steps li{align-content:start}
+.steps li::before{content:counter(step,upper-roman);font-style:normal;font-weight:500;font-size:clamp(64px,7vw,104px);font-variation-settings:"opsz" 96;line-height:.85;letter-spacing:-.01em}
+.steps h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2vw,30px);line-height:1.1}
+.faq summary{font-family:var(--serif);font-weight:500;font-size:clamp(20px,1.7vw,24px);line-height:1.25}
+.cred-item strong{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.2}
+.sit strong{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.2}
+.ctable tbody th{font-family:var(--serif);font-size:19px;line-height:1.3}
+.plan dd{font-family:var(--serif);font-size:18px;line-height:1.35}
 </style>
 </head>
 <body>
@@ -524,7 +554,8 @@ button{font:inherit}
 </div>
 </section>
 
-<section id="about" class="about">
+<section id="about" class="about has-bg-word">
+<div class="bg-word" aria-hidden="true">Aiden</div>
 <div class="wrap about-inner">
 <div class="about-text">
 <h2 class="h2">I’m Aiden James.</h2>
@@ -554,7 +585,8 @@ button{font:inherit}
 </div>
 </section>
 
-<section id="compare" class="compare-band">
+<section id="compare" class="compare-band has-bg-word">
+<div class="bg-word" aria-hidden="true">Compare</div>
 <div class="wrap">
 <div class="section-head">
 <h2 class="h2">Private PPO, Marketplace or COBRA?</h2>
@@ -597,7 +629,8 @@ button{font:inherit}
 </div>
 </section>
 
-<section id="states" class="states">
+<section id="states" class="states has-bg-word">
+<div class="bg-word" aria-hidden="true">31</div>
 <div class="wrap states-inner">
 <div class="states-text">
 <h2 class="h2">Licensed in 31 states. Based in Tampa.</h2>
