@@ -199,10 +199,10 @@ button{font:inherit}
 .alt-contact{display:grid;gap:10px}
 .alt-contact p{margin:0;color:var(--on-dark-3);font-size:14px}
 .alt-contact .buttons{display:flex;gap:10px;flex-wrap:wrap}
-.scheduler{background:var(--white);color:var(--ink);min-height:700px;position:relative}
-.scheduler .calendly-inline-widget{height:700px;min-width:300px}
+.scheduler{background:#121212;color:#F5F5F5;border:1px solid var(--dark-rule);min-height:700px;position:relative}
+.scheduler .calendly-inline-widget{height:700px;min-width:320px}
 .scheduler-fallback{position:absolute;inset:0;display:grid;place-content:center;gap:16px;text-align:center;padding:24px}
-.scheduler-fallback p{margin:0;color:var(--graphite)}
+.scheduler-fallback p{margin:0;color:var(--on-dark-3)}
 .scheduler.loaded .scheduler-fallback{display:none}
 @media (max-width:900px){.book-text{position:static}}
 
@@ -424,10 +424,12 @@ button{font:inherit}
 </div>
 </div>
 <div class="scheduler" id="scheduler">
-<div class="calendly-inline-widget" data-url="https://calendly.com/aidenjameshealth/ajh?hide_gdpr_banner=1&amp;background_color=ffffff&amp;text_color=111111&amp;primary_color=111111"></div>
+<!-- Calendly inline widget begin (widget.js is loaded lazily by the script at the bottom of the page) -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/aidenjameshealth/ajh?background_color=121212&amp;text_color=f5f5f5&amp;primary_color=7c9cff" style="min-width:320px;height:700px;"></div>
+<!-- Calendly inline widget end -->
 <div class="scheduler-fallback">
 <p>Loading available times.</p>
-<a class="btn" href="https://calendly.com/aidenjameshealth/ajh" target="_blank" rel="noopener">Open the booking page</a>
+<a class="btn btn-light" href="https://calendly.com/aidenjameshealth/ajh" target="_blank" rel="noopener">Open the booking page</a>
 </div>
 </div>
 </div>
