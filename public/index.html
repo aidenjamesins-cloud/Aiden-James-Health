@@ -55,6 +55,7 @@
   "mainEntity": [
     {"@type": "Question", "name": "What does it cost to work with you?", "acceptedAnswer": {"@type": "Answer", "text": "Nothing. Carriers pay me a commission when you enroll, so the quote, the comparison, enrollment help and ongoing support are free. Your premium is the same either way."}},
     {"@type": "Question", "name": "Can I only sign up during Open Enrollment?", "acceptedAnswer": {"@type": "Answer", "text": "No. Private, medically underwritten plans accept applications any time of year, with no life event needed, and approval can come within days. For Marketplace plans, 2027 Open Enrollment runs November 1 to January 15, and a life event like losing job coverage, moving or having a baby opens a 60-day window."}},
+    {"@type": "Question", "name": "I earn too much for tax credits. What are my options?", "acceptedAnswer": {"@type": "Answer", "text": "Under current rules, Marketplace tax credits stop at 400% of the poverty line, which is $63,840 for one person on a 2027 plan. Above that, you pay the full Marketplace price. If you’re healthy, a private PPO often costs less. I’ll price both so you can see the difference."}},
     {"@type": "Question", "name": "Is private insurance expensive?", "acceptedAnswer": {"@type": "Answer", "text": "Often it costs less. Private plans are medically underwritten, so healthy people can pay less than they would for a Marketplace plan without tax credits. Your price depends on your age, state, household and health history, which is why I quote it personally instead of guessing."}},
     {"@type": "Question", "name": "Are these year-long contracts?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not. Many private plans bill month to month with no long-term contract, so you can change or cancel as your needs change. I’ll confirm the terms of any plan before you apply."}},
     {"@type": "Question", "name": "Will a PPO cover me anywhere I go?", "acceptedAnswer": {"@type": "Answer", "text": "Many PPO plans use national networks, so you can see doctors across the country without referrals. Networks vary by plan, so I check your doctors and hospitals before you apply."}},
@@ -69,248 +70,128 @@
 }
 </script>
 <style>
+/* Layout: a certificate you can redeem. Dark hero like the card back with the quote certificate in the first screen,
+   then paper and ink bands like the card front and back. Guilloche, gear ticks and the dot grid are the only ornaments. */
 :root{
-  --paper:#E8E6E1;--ink:#111111;--graphite:#55524D;--rule:#C9C5BE;--surface:#F2F0EC;--stone:#D9D6D0;--white:#FFFFFF;
-  --on-dark:#E8E6E1;--on-dark-2:#BDB9B2;--on-dark-3:#A8A49D;--dark-rule:#2E2D2B;
-  --serif:'Bodoni Moda',Didot,Georgia,serif;--sans:'Montserrat',system-ui,sans-serif;
-  --pad:clamp(20px,4vw,56px);--section:clamp(72px,9vw,128px);--header-h:68px
+  --paper:#EDEDEC;--ink:#111111;--graphite:#545457;--rule:#CDCDCB;--surface:#F7F7F6;--stone:#E2E2E1;--white:#FFFFFF;
+  --on-dark:#EDEDEC;--on-dark-2:#BEBEBD;--on-dark-3:#A5A5A5;--dark-rule:#2D2D2D;--body-ink:#3C3C3E;--alert:#8A2E1E;
+  --serif:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif;--sans:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --pad:clamp(20px,4vw,56px);--section:clamp(72px,9vw,128px);--header-h:64px;
+  color-scheme:light
 }
 *{box-sizing:border-box}
+[hidden]{display:none !important}
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--white);color:var(--ink);padding:10px 16px;font-weight:600}
+.skip:focus{left:8px}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 16px)}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
 a{color:inherit}
 img{max-width:100%;display:block}
 button{font:inherit}
 :focus-visible{outline:2px solid currentColor;outline-offset:3px}
-.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--white);color:var(--ink);padding:10px 16px;font-weight:600}
-.skip:focus{left:8px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.wrap{max-width:1360px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.wrap{max-width:1360px;margin:0 auto;padding-left:max(var(--pad),env(safe-area-inset-left,0px));padding-right:max(var(--pad),env(safe-area-inset-right,0px))}
 
-/* Type */
-.h2{font-family:var(--serif);font-weight:500;font-size:clamp(40px,5.4vw,84px);line-height:.95;letter-spacing:-.015em;margin:0}
-.h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2vw,30px);line-height:1.1;margin:0}
-.lead{margin:0;font-size:clamp(17px,1.35vw,19px);line-height:1.6;color:#3E3B37;max-width:34em}
+/* Type scale */
+.h2{font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 96;font-size:clamp(40px,5.4vw,84px);line-height:.95;letter-spacing:-.015em;margin:0;text-wrap:balance}
+.h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2vw,30px);line-height:1.1;margin:0;text-wrap:balance}
+.lead{margin:0;font-size:clamp(17px,1.35vw,19px);line-height:1.6;color:var(--body-ink);max-width:34em}
 .meta{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
-.section-head{display:grid;gap:20px;margin-bottom:clamp(40px,5vw,64px);max-width:720px}
+.section-head{display:grid;gap:20px;margin-bottom:clamp(40px,5vw,64px);max-width:760px}
 
-/* Buttons + links */
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;background:var(--ink);color:var(--white);text-decoration:none;border:1px solid var(--ink);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s}
-.btn:hover{background:#2B2A28}
+/* Buttons and links */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 28px;background:var(--ink);color:var(--white);text-decoration:none;border:1px solid var(--ink);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:#2A2A2A}
 .btn-light{background:var(--on-dark);color:var(--ink);border-color:var(--on-dark)}
 .btn-light:hover{background:var(--white)}
-.btn-ghost-dark{background:transparent;color:var(--on-dark);border-color:rgba(232,230,225,.5)}
-.btn-ghost-dark:hover{background:rgba(232,230,225,.08)}
+.btn-ghost-dark{background:transparent;color:var(--on-dark);border-color:rgba(237,237,236,.5)}
+.btn-ghost-dark:hover{background:rgba(237,237,236,.08)}
 .text-link{font-weight:600;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
 .text-link:hover{text-decoration-thickness:2px}
+.link-btn{background:none;border:0;padding:0;color:inherit;cursor:pointer;font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:4px}
 
 /* Top bar */
-.topbar{background:var(--ink);color:var(--on-dark-2);font-size:12px;letter-spacing:.04em}
-.topbar .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:9px;padding-bottom:9px}
+.topbar{background:var(--ink);color:var(--on-dark-2);font-size:12px;letter-spacing:.04em;border-bottom:1px solid var(--dark-rule)}
+.topbar .wrap{display:flex;justify-content:space-between;gap:6px 16px;flex-wrap:wrap;padding-top:9px;padding-bottom:9px}
 .topbar a{color:var(--on-dark);text-underline-offset:3px}
-
-/* Header */
-.site-header{position:sticky;top:0;z-index:40;background:rgba(17,17,17,.96);backdrop-filter:saturate(140%) blur(8px);color:var(--on-dark);border-bottom:1px solid var(--dark-rule)}
-.header-row{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:var(--header-h)}
-.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--on-dark)}
-.brand svg{width:26px;height:34px;flex:none}
-.brand span{font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-.primary-nav{display:flex;align-items:center;gap:30px}
-.primary-nav a{font-size:13px;font-weight:500;text-decoration:none;color:var(--on-dark-2)}
-.primary-nav a:hover{color:var(--white)}
-.primary-nav .btn{min-height:44px;padding:0 20px;color:var(--ink)}
-.menu-btn{display:none;min-height:44px;min-width:44px;padding:0 12px;background:transparent;border:1px solid rgba(232,230,225,.4);color:var(--on-dark);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
-@media (max-width:920px){
-  .menu-btn{display:inline-flex;align-items:center}
-  .primary-nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--ink);border-bottom:1px solid var(--dark-rule);padding:8px var(--pad) 24px}
-  .primary-nav a{padding:16px 0;border-bottom:1px solid var(--dark-rule);font-size:16px;color:var(--on-dark)}
-  .primary-nav .btn{margin-top:20px;border-bottom:none}
-  .site-header[data-open="true"] .primary-nav{display:flex}
-}
-
-/* Hero */
-.hero{background-color:var(--ink);color:var(--on-dark);background-image:linear-gradient(rgba(232,230,225,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(232,230,225,.045) 1px,transparent 1px);background-size:40px 40px;background-position:-1px -1px}
-.hero-inner{display:grid;gap:clamp(40px,5vw,72px);padding-top:clamp(48px,6vw,88px);padding-bottom:clamp(48px,6vw,80px)}
-.hero-brand{display:flex;align-items:center;gap:clamp(28px,4vw,64px);flex-wrap:wrap}
-.hero-mark{flex:none;width:clamp(200px,24vw,340px);height:auto;overflow:visible}
-.hero-wordmark{min-width:0;display:grid;gap:18px;padding-left:clamp(24px,3.5vw,56px);border-left:1px solid rgba(232,230,225,.45)}
-.hero-wordmark h1{margin:0;display:grid;gap:16px;font-weight:inherit}
-.wm-name{font-family:var(--serif);font-weight:500;font-size:clamp(44px,7vw,112px);line-height:.9;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
-.wm-health{font-size:clamp(12px,1.1vw,15px);font-weight:600;letter-spacing:.7em;text-transform:uppercase}
-.wm-tag{margin:0;font-size:14px;color:var(--on-dark-3)}
-.ruler{height:14px;background-image:repeating-linear-gradient(90deg,rgba(232,230,225,.5) 0 1px,transparent 1px 10px),repeating-linear-gradient(90deg,rgba(232,230,225,.85) 0 1px,transparent 1px 50px);background-size:100% 7px,100% 14px;background-repeat:no-repeat}
-.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
-.hero-bottom .lead{color:#D6D2CB}
-.hero-cta{display:grid;gap:12px;justify-items:start}
-.hero-cta .buttons{display:flex;gap:12px;flex-wrap:wrap}
-.hero-cta small{font-size:13px;color:var(--on-dark-3)}
-@media (max-width:900px){.hero-wordmark{border-left:none;padding-left:0;padding-top:24px;border-top:1px solid rgba(232,230,225,.45)}.wm-name{white-space:normal}}
-/* the one orchestrated moment: the mark draws itself on load */
-.hero-mark .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .9s cubic-bezier(.65,0,.25,1) both}
-.hero-mark .d2{animation-delay:.2s}.hero-mark .d3{animation-delay:.45s}.hero-mark .d4{animation-delay:.6s}
-.hero-mark .guides{animation:fade 1.2s ease .1s both}
-.hero-mark .badge{animation:fade .35s ease 1.2s both}
-@keyframes draw{0%{stroke-dashoffset:1;opacity:0}1%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-
-/* Credibility */
-.cred{border-bottom:1px solid var(--rule)}
-.cred .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:28px;padding-top:32px;padding-bottom:32px}
-.cred-item{display:flex;align-items:center;gap:16px}
-.cred-item svg{flex:none}
-.cred-item strong{display:block;font-size:15px;font-weight:600}
-.cred-item span{font-size:14px;color:var(--graphite)}
-
-/* Who */
-.who{padding-top:var(--section);padding-bottom:var(--section)}
-.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));border-top:1px solid var(--ink)}
-.who-card{display:grid;align-content:start;gap:14px;padding:28px 28px 32px 0;border-bottom:1px solid var(--rule)}
-.who-card p{margin:0;color:#3E3B37;max-width:30em}
-.who-card a{justify-self:start;margin-top:6px;font-size:14px}
-@media (min-width:900px){.who-card + .who-card{padding-left:28px;border-left:1px solid var(--rule)}}
-
-/* Steps */
-.steps-section{background:var(--surface);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-top:var(--section);padding-bottom:var(--section)}
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(24px,3vw,40px);counter-reset:step}
-.steps li{display:grid;gap:12px;padding-top:24px;border-top:1px solid var(--ink);counter-increment:step}
-.steps li::before{content:counter(step);font-family:var(--serif);font-style:italic;font-size:56px;line-height:.9}
-.steps h3{margin:0;font-size:17px;font-weight:600}
-.steps p{margin:0;color:var(--graphite)}
-
-/* About */
-.about{background:var(--stone)}
-.about-inner{display:flex;flex-wrap:wrap;align-items:stretch;gap:clamp(40px,6vw,96px)}
-.about-text{flex:1 1 420px;display:grid;align-content:center;gap:24px;padding:var(--section) 0}
-.promise{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.2vw,30px);line-height:1.3;max-width:22em}
-.about-text .lead{color:#3E3B37}
-.about-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
-.about figure{flex:0 0 auto;align-self:flex-end;margin:clamp(40px,5vw,64px) 0 0;width:min(100%,320px)}
-.about img{width:100%;height:clamp(440px,40vw,560px);object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.05)}
-
-/* Compare */
-.compare{padding-top:var(--section);padding-bottom:var(--section)}
-.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
-.plan{background:var(--white);border:1px solid var(--rule);padding:28px 24px;display:grid;align-content:start;gap:18px}
-.plan > p{margin:0;color:var(--graphite)}
-.plan dl{margin:0;display:grid;gap:14px;border-top:1px solid var(--rule);padding-top:18px}
-.plan dt{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite)}
-.plan dd{margin:4px 0 0;font-size:15px}
-.compare-note{margin:24px 0 0;font-size:14px;color:var(--graphite)}
-
-/* States */
-.states{padding-bottom:var(--section)}
-.states-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,96px);align-items:center}
-.states-text{display:grid;gap:22px}
-.field{display:grid;gap:8px;max-width:360px}
-.field label{font-size:14px;font-weight:600}
-.field select{min-height:52px;padding:0 14px;border:1px solid var(--ink);background:var(--white);color:var(--ink);font:inherit;font-size:16px}
-.state-result{min-height:56px;padding:16px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-size:16px}
-.state-result a{font-weight:600}
-.legend{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--graphite)}
-.legend span{display:flex;align-items:center;gap:8px}
-.legend i{width:14px;height:14px;display:inline-block}
-.tilemap{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:4px}
-.tile{aspect-ratio:1/1;padding:0;border:1px solid var(--on-dark-3);background:transparent;color:var(--graphite);font-size:clamp(8px,.85vw,11px);font-weight:700;letter-spacing:.04em;cursor:pointer}
-.tile.lic{background:var(--ink);border-color:var(--ink);color:var(--on-dark)}
-.tile[aria-pressed="true"]{background:var(--white);border-color:var(--ink);color:var(--ink);outline:2px solid var(--ink);outline-offset:1px}
-
-/* Book */
-.book{background:var(--ink);color:var(--on-dark);padding-top:var(--section);padding-bottom:var(--section)}
-.book-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,96px);align-items:start}
-.book-text{display:grid;gap:24px;position:sticky;top:calc(var(--header-h) + 32px)}
-.book-text .lead{color:var(--on-dark-2)}
-.facts{display:grid;margin:0;border-top:1px solid var(--dark-rule)}
-.facts div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--dark-rule)}
-.facts dt{color:var(--on-dark-3)}.facts dd{margin:0}
-.alt-contact{display:grid;gap:10px}
-.alt-contact p{margin:0;color:var(--on-dark-3);font-size:14px}
-.alt-contact .buttons{display:flex;gap:10px;flex-wrap:wrap}
-.scheduler{background:#121212;color:#F5F5F5;border:1px solid var(--dark-rule);min-height:700px;position:relative}
-.scheduler .calendly-inline-widget{height:700px;min-width:320px}
-.scheduler-fallback{position:absolute;inset:0;display:grid;place-content:center;gap:16px;text-align:center;padding:24px}
-.scheduler-fallback p{margin:0;color:var(--on-dark-3)}
-.scheduler.loaded .scheduler-fallback{display:none}
-@media (max-width:900px){.book-text{position:static}}
-
-/* FAQ */
-.faq-section{padding-top:var(--section);padding-bottom:var(--section)}
-.faq-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,96px);align-items:start}
-.faq{border-top:1px solid var(--ink)}
-.faq details{border-bottom:1px solid var(--rule)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;font-size:17px;font-weight:600}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/12px 1.5px no-repeat,linear-gradient(currentColor,currentColor) center/1.5px 12px no-repeat;transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq p{margin:0 0 22px;color:#3E3B37;max-width:36em}
-
-/* Footer */
-.site-footer{background:var(--ink);color:var(--on-dark);overflow:hidden}
-.refer{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:48px;padding-bottom:48px;border-bottom:1px solid var(--dark-rule)}
-.refer p{margin:0;font-family:var(--serif);font-size:clamp(24px,2.4vw,34px);line-height:1.15;max-width:18em}
-.refer-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.refer-status{font-size:14px;color:var(--on-dark-3);min-width:1px}
-.foot-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px;padding-top:56px}
-.foot-cols h2{margin:0 0 10px;font-size:13px;font-weight:600;color:var(--on-dark-3)}
-.foot-cols ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px}
-.foot-cols a{text-decoration:none}.foot-cols a:hover{text-decoration:underline}
-.foot-cols li span{color:var(--on-dark-2)}
-.legal{margin-top:48px;padding-top:24px;border-top:1px solid var(--dark-rule);display:grid;gap:10px;font-size:13px;line-height:1.7;color:var(--on-dark-3);max-width:1000px}
-.legal p{margin:0}
-.giant{margin-top:40px;font-family:var(--serif);font-size:clamp(56px,11.5vw,176px);font-weight:500;line-height:.8;letter-spacing:-.02em;text-transform:uppercase;color:#242321;white-space:nowrap;transform:translateY(12%)}
-
-/* Mobile action bar */
-.action-bar{display:none}
-@media (max-width:760px){
-  .action-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:45;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(17,17,17,.97);border-top:1px solid var(--dark-rule)}
-  .action-bar .btn{min-height:48px;padding:0 12px}
-  body{padding-bottom:76px}
-}
-
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .hero-mark .draw{stroke-dasharray:none;stroke-dashoffset:0;animation:none}
-  .hero-mark .guides,.hero-mark .badge{animation:none}
-  *{transition:none !important}
-}
-
-/* ---- Additions: new sections, built in the original palette and square style ---- */
-[hidden]{display:none !important}
 .oe-short{display:none}
 @media (max-width:640px){.oe-long{display:none}.oe-short{display:inline}}
-@media (max-width:1024px) and (min-width:921px){
+
+/* Header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(17,17,17,.96);backdrop-filter:saturate(140%) blur(8px);color:var(--on-dark);border-bottom:1px solid var(--dark-rule)}
+.header-row{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:var(--header-h)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--on-dark)}
+.brand svg{width:22px;height:29px;flex:none}
+.brand span{font-family:var(--serif);font-size:19px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.primary-nav{display:flex;align-items:center;gap:28px}
+.primary-nav a{font-size:13px;font-weight:500;text-decoration:none;color:var(--on-dark-2)}
+.primary-nav a:hover{color:var(--white)}
+.primary-nav .btn{min-height:42px;padding:0 20px;color:var(--ink)}
+.header-cta{display:none}
+.menu-btn{display:none;min-height:42px;min-width:44px;padding:0 12px;background:transparent;border:1px solid rgba(237,237,236,.4);color:var(--on-dark);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.header-right{display:flex;align-items:center;gap:10px}
+@media (max-width:1080px){
   .menu-btn{display:inline-flex;align-items:center}
-  .primary-nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--ink);border-bottom:1px solid var(--dark-rule);padding:8px var(--pad) 24px}
+  .header-cta{display:inline-flex;min-height:42px;padding:0 16px;font-size:11px}
+  .primary-nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--ink);border-bottom:1px solid var(--dark-rule);padding:8px max(var(--pad),env(safe-area-inset-right,0px)) 24px max(var(--pad),env(safe-area-inset-left,0px))}
   .primary-nav a{padding:16px 0;border-bottom:1px solid var(--dark-rule);font-size:16px;color:var(--on-dark)}
-  .primary-nav .btn{margin-top:20px;border-bottom:none}
+  .primary-nav .btn{display:none}
   .site-header[data-open="true"] .primary-nav{display:flex}
 }
+@media (max-width:560px){.header-cta{display:none}.eb-long{display:none}}
+@media (max-width:380px){.brand span{font-size:16px}}
 
-/* Hero: headline + quote form under the wordmark */
-.hero-main{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,4.5vw,72px);align-items:start}
-@media (max-width:980px){.hero-main{grid-template-columns:1fr}}
-.hero-copy{display:grid;gap:22px;align-content:start}
-.hero-copy .meta{margin:0;color:var(--on-dark-3)}
-.hero-copy .meta a{text-underline-offset:4px}
-.hero-q{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(32px,3.6vw,54px);line-height:1.04;letter-spacing:-.01em;color:var(--on-dark)}
-.hero-q em{font-style:italic}
-.hero-copy .lead{color:#D6D2CB}
+/* Hero */
+.hero{position:relative;overflow:hidden;background:var(--ink);color:var(--on-dark)}
+.hero-art{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,540px);grid-template-areas:"copy card" "more card";column-gap:clamp(40px,6vw,104px);row-gap:28px;align-items:start;padding-top:clamp(36px,5vw,72px);padding-bottom:clamp(48px,6vw,88px)}
+.hero-copy{grid-area:copy;display:grid;gap:20px;align-content:start;padding-top:clamp(0px,2vw,24px)}
+.hero-more{grid-area:more;display:grid;gap:20px;align-content:start}
+.hero-card{grid-area:card}
+.hero .meta{margin:0;color:var(--on-dark-3)}
+.hero h1{margin:0;font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 96;font-size:clamp(40px,5vw,76px);line-height:.98;letter-spacing:-.015em;text-wrap:balance}
+.hero h1 em{font-style:italic;display:block;color:var(--on-dark-2)}
+.hero .lead{color:#D3D3D2;max-width:30em}
 .free-line{margin:0;font-weight:600;color:var(--on-dark)}
 .even-if{margin:0;padding:0;list-style:none;display:grid;gap:8px}
 .even-if li{display:flex;gap:12px;align-items:baseline;font-size:15px;color:var(--on-dark-2)}
 .even-if li::before{content:"";flex:none;width:14px;height:1px;background:var(--on-dark-3);transform:translateY(-4px)}
-.hero-promise{margin:0;font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.4;color:var(--on-dark-2)}
+.hero-promise{margin:0;font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.4;color:var(--on-dark-2);padding-top:18px;border-top:1px solid var(--dark-rule);max-width:26em}
+.hero-lead-m{display:none}
+@media (max-width:980px){
+  .hero-lead{display:none}.hero-lead-m{display:block}
+  .hero h1{font-size:clamp(36px,7.4vw,56px)}
+  .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "card" "more";row-gap:24px}
+  .hero-copy{padding-top:0;gap:14px}
+  .hero .hero-copy .lead{font-size:16px}
+}
 
-/* Quote form */
-.quote-card{background:var(--surface);color:var(--ink);padding:clamp(24px,3vw,36px);border:1px solid var(--rule);display:grid;gap:20px}
-.quote-card h2{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(30px,2.7vw,40px);line-height:1.05}
-.quote-card .sub{margin:-10px 0 0;color:var(--graphite);font-size:15px}
-.quote-card form,.q-fields{display:grid;gap:18px}
+/* The quote certificate */
+.quote-card{position:relative;background:var(--surface);color:var(--ink);padding:clamp(36px,3.4vw,48px) clamp(32px,3.2vw,46px) clamp(32px,3vw,42px);display:grid;gap:18px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.qc-frame{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.qc-head{position:relative;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.qc-head .meta{margin:0;font-size:11px;color:var(--graphite);letter-spacing:.26em}
+.serial{margin:0;display:flex;align-items:baseline;gap:8px;color:var(--ink);white-space:nowrap}
+.serial i{font-family:var(--serif);font-style:italic;font-size:18px;font-variation-settings:"opsz" 18}
+.serial b{font-size:13px;font-weight:600;letter-spacing:.16em;font-variant-numeric:tabular-nums}
+.quote-card h2{position:relative;margin:0;font-family:var(--serif);font-style:italic;font-weight:500;font-variation-settings:"opsz" 96;font-size:clamp(40px,3.6vw,56px);line-height:.95;letter-spacing:-.01em}
+.qc-advisor{position:relative;display:flex;align-items:center;gap:14px;margin-top:-4px}
+.qc-photo{flex:none;width:46px;height:58px;object-fit:cover;border-radius:50%;box-shadow:0 0 0 1px var(--surface),0 0 0 2px var(--ink)}
+.quote-card .sub{position:relative;margin:0;color:var(--graphite);font-size:15px;line-height:1.45;min-width:0}
+.quote-card .sub span{display:block;margin-top:2px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.card-hello{position:relative;margin:0;padding:10px 12px;border:1px solid var(--rule);background:var(--white);font-size:13px;color:var(--body-ink)}
+.progress{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.progress span{height:2px;background:var(--rule)}
+.progress span.on{background:var(--ink)}
+.step-label{margin:-8px 0 0;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite);display:flex;justify-content:space-between;gap:12px}
+.quote-card form,.q-step{position:relative;display:grid;gap:16px}
 .quote-card fieldset{border:0;margin:0;padding:0;min-width:0}
 .quote-card legend{padding:0;margin-bottom:10px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--graphite)}
 .choice-row{display:flex;flex-wrap:wrap;gap:8px}
 .choice{position:relative;display:inline-flex}
 .choice input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
-.choice span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1px solid var(--rule);background:var(--white);font-size:14px;cursor:pointer;transition:background .15s,border-color .15s}
+.choice span{display:inline-flex;align-items:center;min-height:44px;padding:0 15px;border:1px solid var(--rule);background:var(--white);font-size:14px;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
 .choice span:hover{border-color:var(--ink)}
 .choice input:checked + span{background:var(--ink);border-color:var(--ink);color:var(--white)}
 .choice input:focus-visible + span{outline:2px solid var(--ink);outline-offset:2px}
@@ -318,43 +199,109 @@ button{font:inherit}
 @media (max-width:520px){.q-row{grid-template-columns:1fr}}
 .qf{display:grid;gap:6px;min-width:0}
 .qf label{font-size:13px;font-weight:600}
-.qf input,.qf select{width:100%;min-height:50px;padding:0 14px;border:1px solid var(--ink);background:var(--white);font:inherit;font-size:16px;color:var(--ink)}
+.qf label small{font-weight:500;color:var(--graphite)}
+.qf input,.qf select{width:100%;min-height:50px;padding:0 14px;border:1px solid var(--ink);border-radius:0;background:var(--white);font:inherit;font-size:16px;color:var(--ink)}
 .qf input:focus,.qf select:focus{outline:2px solid var(--ink);outline-offset:1px}
 .qf.optional input{border-color:var(--rule)}
 .q-note{margin:0;font-size:13px;color:var(--graphite)}
 .q-note:empty{display:none}
 .consent{display:flex;gap:12px;align-items:flex-start;font-size:12.5px;line-height:1.55;color:var(--graphite);cursor:pointer}
 .consent input{flex:none;width:20px;height:20px;margin:1px 0 0;accent-color:var(--ink)}
-.fine{margin:0;font-size:12.5px;color:var(--graphite);text-align:center}
-.quote-card button.btn{width:100%;min-height:56px;gap:10px}
-.safe{margin:0;display:flex;justify-content:center;align-items:center;gap:8px;font-size:13px;color:var(--graphite)}
-.q-status{margin:0;font-size:14px;color:#8A2E1E}
+.fine{margin:0;font-size:12.5px;color:var(--graphite)}
+.quote-card .btn.block{width:100%;min-height:56px}
+.q-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.safe{margin:0;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--graphite)}
+.q-status{position:relative;margin:0;font-size:14px;color:var(--alert)}
 .q-status:empty{display:none}
 .q-status a{font-weight:600}
-.q-done{display:grid;gap:14px;outline:none}
-.q-done p{margin:0;color:#3E3B37}
+.q-done{position:relative;display:grid;gap:14px;outline:none}
+.q-done p{margin:0;color:var(--body-ink)}
+.q-done .draft-note{font-size:12.5px;color:var(--graphite);padding-top:12px;border-top:1px solid var(--rule)}
 .hp{position:absolute;left:-5000px;width:1px;height:1px;overflow:hidden}
+@media (max-width:520px){.quote-card{padding:30px 24px 26px}.quote-card h2{font-size:40px}.quote-card .sub span{letter-spacing:.1em;font-size:10.5px}}
 
-/* Who I help: situation links under the ruled columns */
+/* Credentials, set like the serials on the card */
+.cred{border-bottom:1px solid var(--rule)}
+.cred .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:24px 32px;padding-top:36px;padding-bottom:36px}
+.cred-item{display:grid;gap:4px;padding-left:18px;border-left:1px solid var(--ink)}
+.cred-item b{font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 48;font-size:30px;line-height:1.05}
+.cred-item span{font-size:14px;color:var(--graphite)}
+
+/* Ribbon rule */
+.ribbon{height:14px;width:100%;display:block;color:var(--ink)}
+.dark .ribbon,.hero .ribbon{color:var(--on-dark)}
+
+/* Pricing explainer */
+.pricing{padding-top:var(--section);padding-bottom:var(--section)}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px}
+.price-panel{background:var(--white);border:1px solid var(--rule);padding:clamp(24px,3vw,36px);display:grid;gap:18px;align-content:start}
+.price-panel .meta{margin:0;color:var(--graphite)}
+.price-panel p{margin:0;color:var(--body-ink);max-width:32em}
+.pool{width:100%;max-width:440px;height:auto;display:block}
+.pool-cap{font-size:13px;color:var(--graphite)}
+.cliff{margin-top:16px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 28px;align-items:baseline;border-top:1px solid var(--ink);padding-top:24px}
+.cliff b{font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 96;font-size:clamp(48px,6vw,84px);line-height:.9;font-variant-numeric:lining-nums}
+.cliff p{margin:0;color:var(--body-ink);max-width:40em}
+.cliff .btn{grid-column:2;justify-self:start}
+@media (max-width:640px){.cliff{grid-template-columns:1fr}.cliff .btn{grid-column:1}}
+
+/* Who */
+.who{padding-bottom:var(--section)}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));border-top:1px solid var(--ink)}
+.who-card{display:grid;align-content:start;gap:14px;padding:28px 28px 32px 0;border-bottom:1px solid var(--rule)}
+.who-card p{margin:0;color:var(--body-ink);max-width:30em}
+.who-card a{justify-self:start;margin-top:6px;font-size:14px}
+@media (min-width:900px){.who-card + .who-card{padding-left:28px;border-left:1px solid var(--rule)}}
 .situations{margin-top:clamp(40px,5vw,64px);display:grid;gap:16px}
 .situations .meta{margin:0;color:var(--graphite)}
-.sit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));border-top:1px solid var(--ink)}
+.sit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));border-top:1px solid var(--ink)}
+@media (min-width:900px){.sit-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.sit:nth-child(3n+2),.sit:nth-child(3n){padding-left:20px;border-left:1px solid var(--rule)}}
 .sit{display:grid;gap:2px;padding:18px 20px 18px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink)}
-.sit strong{font-size:16px;font-weight:600}
+.sit strong{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.2}
 .sit strong::after{content:" \2192"}
 .sit span{font-size:14px;color:var(--graphite)}
 .sit:hover strong{text-decoration:underline;text-underline-offset:4px}
-@media (min-width:900px){.sit + .sit{padding-left:20px;border-left:1px solid var(--rule)}}
 
-/* Comparison table (dark band, same as the booking section) */
-.compare-band{background:var(--ink);color:var(--on-dark);padding-top:var(--section);padding-bottom:var(--section)}
-.compare-band .lead{color:var(--on-dark-2)}
+/* Steps */
+.steps-section{background:var(--surface);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding-top:var(--section);padding-bottom:var(--section)}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(24px,3vw,40px);counter-reset:step}
+.steps li{display:grid;gap:12px;align-content:start;padding-top:24px;border-top:1px solid var(--ink);counter-increment:step}
+.steps li::before{content:counter(step,upper-roman);font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 96;font-size:clamp(64px,7vw,104px);line-height:.85;letter-spacing:-.01em}
+.steps h3{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(24px,2vw,30px);line-height:1.1}
+.steps p{margin:0;color:var(--graphite)}
+
+/* About, with the oval frame from the card front */
+.about{background:var(--stone);padding-top:var(--section);padding-bottom:var(--section)}
+.about-inner{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(40px,6vw,96px);align-items:center}
+@media (max-width:900px){.about-inner{grid-template-columns:1fr}}
+.about-text{display:grid;gap:24px;align-content:center}
+.promise{margin:0;font-family:var(--serif);font-style:italic;font-weight:500;font-variation-settings:"opsz" 96;font-size:clamp(24px,2.2vw,30px);line-height:1.3;max-width:22em}
+.about-actions{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.portrait{position:relative;width:min(100%,400px);aspect-ratio:300/380;max-width:100%;margin:0 auto}
+.portrait img{position:absolute;inset:9.2% 9.6%;width:80.8%;height:81.6%;object-fit:cover;object-position:50% 30%;border-radius:50%}
+.portrait svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.portrait figcaption{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);background:var(--stone);padding:4px 14px;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
+
+/* Coverage */
+.compare{padding-top:var(--section);padding-bottom:var(--section)}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
+.plan{background:var(--white);border:1px solid var(--rule);padding:28px 24px;display:grid;align-content:start;gap:18px}
+.plan > p{margin:0;color:var(--graphite)}
+.plan dl{margin:0;display:grid;gap:14px;border-top:1px solid var(--rule);padding-top:18px}
+.plan dt{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--graphite)}
+.plan dd{margin:4px 0 0;font-family:var(--serif);font-size:18px;line-height:1.35}
+.compare-note{margin:24px 0 0;font-size:14px;color:var(--graphite)}
+
+/* Dark bands */
+.dark{background:var(--ink);color:var(--on-dark)}
+.dark .lead{color:var(--on-dark-2)}
+.compare-band{padding-top:var(--section);padding-bottom:var(--section)}
 .table-wrap{overflow-x:auto;border-top:1px solid var(--on-dark);-webkit-overflow-scrolling:touch}
 .ctable{width:100%;min-width:680px;border-collapse:collapse;font-size:15px}
 .ctable th,.ctable td{padding:18px 20px 18px 0;text-align:left;border-bottom:1px solid var(--dark-rule);vertical-align:top}
 .ctable thead th{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark-3);white-space:nowrap}
 .ctable thead th.hl{color:var(--on-dark)}
-.ctable tbody th{font-weight:500;color:var(--on-dark);width:26%}
+.ctable tbody th{font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.3;color:var(--on-dark);width:26%}
 .ctable td{color:var(--on-dark-2)}
 .mark{display:flex;gap:10px;align-items:flex-start}
 .mark svg{flex:none;margin-top:3px;color:var(--on-dark)}
@@ -363,42 +310,141 @@ button{font:inherit}
 @media (max-width:760px){.swipe{display:block}}
 .dark-note{margin:24px 0 0;font-size:14px;color:var(--on-dark-3);max-width:60em}
 
-/* Booking prep note */
-.prep{margin:0;font-size:14px;line-height:1.6;color:var(--on-dark-3)}
+/* States */
+.states{padding-top:var(--section);padding-bottom:var(--section)}
+.states-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,96px);align-items:center}
+.states-text{display:grid;gap:22px}
+.field{display:grid;gap:8px;max-width:360px}
+.field label{font-size:14px;font-weight:600}
+.field select{min-height:52px;padding:0 14px;border:1px solid var(--ink);border-radius:0;background:var(--white);color:var(--ink);font:inherit;font-size:16px}
+.state-result{margin:0;min-height:56px;padding:16px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);font-size:16px}
+.state-result a{font-weight:600}
+.legend{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--graphite)}
+.legend span{display:flex;align-items:center;gap:8px}
+.legend i{width:14px;height:14px;display:inline-block}
+.legend .k-lic{background:var(--ink)}
+.legend .k-par{border:1px solid var(--on-dark-3)}
+.tilemap{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:4px}
+.tile{aspect-ratio:1/1;padding:0;border:1px solid var(--on-dark-3);background:var(--paper);color:var(--graphite);font-size:clamp(8px,.85vw,11px);font-weight:700;letter-spacing:.04em;cursor:pointer}
+.tile.lic{background:var(--ink);border-color:var(--ink);color:var(--on-dark)}
+.tile[aria-pressed="true"]{background:var(--white);border-color:var(--ink);color:var(--ink);outline:2px solid var(--ink);outline-offset:1px}
 
-/* Share row in the footer */
+/* Book */
+.book{padding-top:var(--section);padding-bottom:var(--section)}
+.book-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,96px);align-items:start}
+.book-text{display:grid;gap:24px}
+.facts{display:grid;margin:0;border-top:1px solid var(--dark-rule)}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--dark-rule)}
+.facts dt{color:var(--on-dark-3)}.facts dd{margin:0}
+.prep{margin:0;font-size:14px;line-height:1.6;color:var(--on-dark-3)}
+.alt-contact{display:grid;gap:10px}
+.alt-contact p{margin:0;color:var(--on-dark-3);font-size:14px}
+.alt-contact .buttons{display:flex;gap:10px;flex-wrap:wrap}
+.scheduler{position:relative;min-height:700px;border:1px solid var(--dark-rule);overflow:hidden}
+.scheduler .calendly-inline-widget{position:relative;z-index:1;height:700px;min-width:320px}
+.scheduler-fallback{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:18px;text-align:center;padding:40px 24px}
+.scheduler-fallback canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.scheduler-fallback > *:not(canvas){position:relative}
+.scheduler-fallback p{margin:0;color:var(--on-dark-3);max-width:24em}
+.scheduler-fallback .h3{color:var(--on-dark)}
+.scheduler.loaded .scheduler-fallback{display:none}
+
+/* FAQ */
+.faq-section{padding-top:var(--section);padding-bottom:var(--section)}
+.faq-inner{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,6vw,96px);align-items:start}
+.faq{border-top:1px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;font-family:var(--serif);font-weight:500;font-size:clamp(20px,1.7vw,24px);line-height:1.25}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:12px;height:12px;background:linear-gradient(currentColor,currentColor) center/12px 1.5px no-repeat,linear-gradient(currentColor,currentColor) center/1.5px 12px no-repeat;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{margin:0 0 22px;color:var(--body-ink);max-width:36em}
+
+/* Footer */
+.site-footer{overflow:hidden}
+.refer{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:48px;padding-bottom:48px;border-bottom:1px solid var(--dark-rule)}
+.refer p{margin:0;font-family:var(--serif);font-variation-settings:"opsz" 96;font-size:clamp(24px,2.4vw,34px);line-height:1.15;max-width:18em}
+.refer-actions{display:grid;gap:10px}
 .share-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .share-row .btn{min-height:46px;padding:0 20px}
+.refer-status{font-size:14px;color:var(--on-dark-3);min-height:1em}
+.foot-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:40px;padding-top:56px}
+.foot-cols h2{margin:0 0 10px;font-size:13px;font-weight:600;color:var(--on-dark-3)}
+.foot-cols ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:15px}
+.foot-cols a{text-decoration:none}.foot-cols a:hover{text-decoration:underline}
+.foot-cols li span{color:var(--on-dark-2)}
+.legal{margin-top:48px;padding-top:24px;border-top:1px solid var(--dark-rule);display:grid;gap:10px;font-size:13px;line-height:1.7;color:var(--on-dark-3);max-width:1000px}
+.legal p{margin:0}
+.giant{margin-top:40px;font-family:var(--serif);font-variation-settings:"opsz" 96;font-size:clamp(52px,11.5vw,176px);font-weight:500;line-height:.8;letter-spacing:-.02em;text-transform:uppercase;color:#232323;white-space:nowrap;transform:translateY(12%)}
 
-/* ---- Bodoni display style, matching the footer wordmark ---- */
-/* Highest-contrast cut of Bodoni Moda (hairline thins, heavy stems) for display text */
-.h2,.wm-name,.hero-q,.promise,.quote-card h2,.refer p,.giant{font-variation-settings:"opsz" 96}
-.h2{font-weight:500}
-
-/* Giant tonal lettering, cropped by the section edge, like the footer */
-.has-bg-word{position:relative;overflow:hidden}
-.has-bg-word > .wrap{position:relative;z-index:1}
-.bg-word{position:absolute;left:0;right:0;z-index:0;margin:0;padding:0 var(--pad);font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 96;line-height:.8;letter-spacing:-.02em;text-transform:uppercase;white-space:nowrap;pointer-events:none;user-select:none}
-.about .bg-word{bottom:0;text-align:right;font-size:clamp(110px,24vw,360px);color:#CBC7C0;transform:translateY(16%)}
+/* Mobile action bar: only after the quote card has scrolled away */
+.action-bar{display:none}
 @media (max-width:760px){
-  .about .bg-word{text-align:center;padding:0;font-size:34vw;transform:translateY(12%)}
-  .about figure{width:min(72%,280px);margin-left:auto;margin-right:auto}
+  .action-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:45;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:rgba(17,17,17,.97);border-top:1px solid var(--dark-rule);transform:translateY(110%);transition:transform .25s ease}
+  .action-bar[data-show="true"]{transform:none}
+  .action-bar .btn{min-height:48px;padding:0 12px}
+  body{padding-bottom:76px}
 }
-.compare-band .bg-word{top:0;font-size:clamp(96px,19vw,300px);color:#242321;transform:translateY(-24%)}
-.states .bg-word{top:0;text-align:right;font-size:clamp(170px,30vw,460px);color:#DCD9D3;transform:translateY(-30%)}
-.states{padding-top:var(--section)}
-.states .tile:not(.lic){background:var(--paper)}
-.states .tile[aria-pressed="true"]{background:var(--white)}
 
-/* Bodoni for more of the page */
-.steps li{align-content:start}
-.steps li::before{content:counter(step,upper-roman);font-style:normal;font-weight:500;font-size:clamp(64px,7vw,104px);font-variation-settings:"opsz" 96;line-height:.85;letter-spacing:-.01em}
-.steps h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2vw,30px);line-height:1.1}
-.faq summary{font-family:var(--serif);font-weight:500;font-size:clamp(20px,1.7vw,24px);line-height:1.25}
-.cred-item strong{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.2}
-.sit strong{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.2}
-.ctable tbody th{font-family:var(--serif);font-size:19px;line-height:1.3}
-.plan dd{font-family:var(--serif);font-size:18px;line-height:1.35}
+/* Load moment: the certificate frame and the seal rings settle in once */
+@keyframes settle{from{opacity:.0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.quote-card{animation:settle .7s cubic-bezier(.2,.7,.2,1) .05s both}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .quote-card{animation:none}
+  *{transition:none !important}
+}
+/* ---------- depth pass: fewer lines, more layers ---------- */
+:root{--shadow-1:0 1px 2px rgba(17,17,17,.05),0 12px 32px -14px rgba(17,17,17,.16);--shadow-2:0 2px 6px rgba(17,17,17,.06),0 34px 80px -28px rgba(17,17,17,.28);--raised-dark:#171717}
+.hero{background:radial-gradient(900px 640px at 76% 44%,#222222 0%,#151515 46%,#0C0C0C 100%)}
+@media (max-width:980px){.hero{background:radial-gradient(720px 640px at 50% 60%,#202020 0%,#141414 55%,#0C0C0C 100%)}}
+.hero-grid{padding-bottom:clamp(120px,11vw,160px)}
+.hero h1{font-size:clamp(40px,4.6vw,70px)}
+.hero-card{position:relative}
+.back-card{position:absolute;inset:0;background:linear-gradient(160deg,#1E1E1E,#141414);border:1px solid rgba(237,237,236,.10);transform:translate(-30px,22px) rotate(-4.5deg);box-shadow:0 40px 90px -30px rgba(0,0,0,.8)}
+.back-card::before{content:"";position:absolute;inset:12px;border:1px solid rgba(237,237,236,.08)}
+.back-card svg{position:absolute;left:3%;bottom:3%;width:44%;height:auto}
+.quote-card{background:linear-gradient(180deg,#FCFCFB 0%,#F2F2F1 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 2px 6px rgba(0,0,0,.28),0 60px 120px -36px rgba(0,0,0,.8)}
+.choice span{border-color:#DCDCDA}
+.site-header{transition:box-shadow .25s ease}
+.site-header[data-scrolled="true"]{box-shadow:0 12px 32px -14px rgba(0,0,0,.6)}
+
+.cred{border-bottom:0;position:relative;z-index:2;margin-top:clamp(-96px,-6.5vw,-72px)}
+.cred .wrap{display:block;padding-top:0;padding-bottom:0}
+.cred-panel{background:var(--white);box-shadow:var(--shadow-2);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:30px 0}
+.cred-item{border-left:0;padding:0 clamp(18px,2.4vw,36px)}
+.cred-item + .cred-item{border-left:1px solid var(--rule)}
+@media (max-width:900px){.cred-panel{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px;padding:24px 0}.cred-item:nth-child(3){border-left:0}}
+@media (max-width:420px){.cred-item b{font-size:24px}.cred-item span{font-size:13px}}
+
+.pricing{padding-top:clamp(88px,10vw,140px)}
+.price-panel{border:0;box-shadow:var(--shadow-1)}
+.cliff{border-top:0;margin-top:16px;padding:clamp(28px,4vw,52px);background:radial-gradient(600px 300px at 20% 0%,#222 0%,#111 70%);color:var(--on-dark);box-shadow:var(--shadow-2)}
+.cliff p{color:var(--on-dark-2)}
+.cliff .btn{background:var(--on-dark);color:var(--ink);border-color:var(--on-dark)}
+.cliff .btn:hover{background:var(--white)}
+
+.steps-section{border:0}
+.steps li{border-top:0;padding:clamp(24px,2.6vw,36px);background:var(--white);box-shadow:var(--shadow-1)}
+
+.about{position:relative;overflow:hidden}
+.about::before{content:"Aiden";position:absolute;right:-.03em;bottom:-.2em;font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 96;font-size:clamp(120px,19vw,300px);line-height:.8;letter-spacing:-.02em;text-transform:uppercase;color:#DBDBDA;pointer-events:none;white-space:nowrap}
+@media (max-width:900px){.about::before{display:none}}
+.about-inner{position:relative}
+.portrait img{box-shadow:0 44px 70px -34px rgba(17,17,17,.55)}
+.portrait figcaption{background:transparent}
+
+.plan{border:0;box-shadow:var(--shadow-1);transition:transform .25s ease,box-shadow .25s ease}
+.plan:hover{transform:translateY(-3px);box-shadow:var(--shadow-2)}
+
+.compare-band{background:radial-gradient(1100px 520px at 50% 0%,#1C1C1C 0%,#111 62%)}
+.compare-band .table-wrap{background:var(--raised-dark);border:1px solid rgba(237,237,236,.07);padding:4px clamp(16px,2.6vw,36px) 8px;box-shadow:0 50px 90px -50px rgba(0,0,0,.9)}
+.ctable tr:last-child th,.ctable tr:last-child td{border-bottom:0}
+
+.tile.lic{box-shadow:0 6px 14px -8px rgba(17,17,17,.6)}
+.book{background:radial-gradient(900px 600px at 80% 30%,#1C1C1C 0%,#111 60%)}
+.scheduler{background:var(--raised-dark);border-color:rgba(237,237,236,.07);box-shadow:0 50px 90px -50px rgba(0,0,0,.9)}
+@media (prefers-reduced-motion:reduce){.plan:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -406,66 +452,99 @@ button{font:inherit}
 
 <div class="topbar">
 <div class="wrap">
-<span><span class="oe-long">2027 Marketplace Open Enrollment starts November 1. Enroll by December 15 for coverage that starts January 1.</span><span class="oe-short">2027 Open Enrollment starts November 1.</span> <a href="#quote">Plan ahead</a></span>
-<span><a href="tel:+18134510821">(813) 451-0821</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="https://nipr.com">Verify NPN 22297742</a></span>
+<span><span class="oe-long">2027 Open Enrollment runs November 1 to January 15. Enroll by December 15 for coverage that starts January 1. Private PPOs enroll any month.</span><span class="oe-short">Open Enrollment starts November 1.</span> <a href="#quote" data-focus-quote>Get a quote</a></span>
+<span><a href="tel:+18134510821">(813) 451-0821</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="https://nipr.com" target="_blank" rel="noopener">Verify NPN 22297742</a></span>
 </div>
 </div>
 
 <header class="site-header" data-open="false">
 <div class="wrap header-row">
 <a class="brand" href="#top" aria-label="Aiden James Health, back to top">
-<svg viewBox="170 140 220 290" aria-hidden="true"><g fill="none" stroke="#E8E6E1" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"><path d="M190 340 L280 160"/><path d="M280 160 V372 Q280 410 244 410 Q216 410 212 386"/><path d="M225 270 H370"/><path d="M370 160 V340"/></g><rect x="254" y="244" width="52" height="52" fill="#E8E6E1"/><rect x="274.5" y="253" width="11" height="34" fill="#111111"/><rect x="263" y="264.5" width="34" height="11" fill="#111111"/></svg>
+<svg viewBox="170 140 220 290" aria-hidden="true"><g fill="none" stroke="#EDEDEC" stroke-width="16" stroke-linecap="square" stroke-linejoin="miter"><path d="M190 340 L280 160"/><path d="M280 160 V372 Q280 410 244 410 Q216 410 212 386"/><path d="M225 270 H370"/><path d="M370 160 V340"/></g><rect x="254" y="244" width="52" height="52" fill="#EDEDEC"/><rect x="274.5" y="253" width="11" height="34" fill="#111111"/><rect x="263" y="264.5" width="34" height="11" fill="#111111"/></svg>
 <span>Aiden James</span>
 </a>
-<button class="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+<div class="header-right">
 <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+<a href="#pricing">How pricing works</a>
 <a href="#who">Who I help</a>
 <a href="#how">How it works</a>
 <a href="#about">Meet Aiden</a>
 <a href="#plans">Coverage</a>
 <a href="#faq">FAQ</a>
-<a class="btn btn-light" href="#quote">See my plans</a>
+<a class="btn btn-light" href="#quote" data-focus-quote>Get a quote</a>
 </nav>
+<a class="btn btn-light header-cta" href="#quote" data-focus-quote>Get a quote</a>
+<button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+</div>
 </div>
 </header>
 
 <main id="main">
 <section id="top" class="hero">
-<div class="wrap hero-inner">
-<div class="hero-brand">
-<svg class="hero-mark" viewBox="150 140 300 290" aria-hidden="true">
-<g class="guides" fill="none" stroke="#E8E6E1">
-<circle cx="280" cy="270" r="118" stroke-width="5" stroke-dasharray="0.7 9.597" transform="rotate(-90 280 270)"/>
-<circle cx="280" cy="270" r="112" stroke-width="0.6" opacity="0.7"/>
-<line x1="150" y1="270" x2="450" y2="270" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.7"/>
-<line x1="280" y1="140" x2="280" y2="430" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.7"/>
-<line x1="160" y1="340" x2="410" y2="340" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.7"/>
-<path d="M230 340 A40 40 0 0 0 207.9 304.2" stroke-width="0.8"/>
-<text x="236" y="322" font-family="Montserrat, system-ui, sans-serif" font-size="8" font-weight="600" letter-spacing="2" fill="#A8A49D" stroke="none">63.4°</text>
-</g>
-<g fill="none" stroke="#E8E6E1" stroke-width="12" stroke-linecap="square" stroke-linejoin="miter">
-<path class="draw d1" pathLength="1" d="M190 340 L280 160"/>
-<path class="draw d2" pathLength="1" d="M280 160 V372 Q280 410 244 410 Q216 410 212 386"/>
-<path class="draw d3" pathLength="1" d="M225 270 H370"/>
-<path class="draw d4" pathLength="1" d="M370 160 V340"/>
-</g>
-<g class="badge">
-<rect x="258" y="248" width="44" height="44" fill="#E8E6E1"/>
-<rect x="275.5" y="256" width="9" height="28" fill="#111111"/>
-<rect x="266" y="265.5" width="28" height="9" fill="#111111"/>
-</g>
-</svg>
-<div class="hero-wordmark">
-<h1><span class="wm-name">Aiden James</span><span class="wm-health">Health</span></h1>
-<p class="wm-tag">Private health advisory · Tampa · Licensed in 31 states</p>
-</div>
-</div>
-<div class="ruler" aria-hidden="true"></div>
-<div class="hero-main">
+<canvas class="hero-art" id="hero-art" aria-hidden="true"></canvas>
+<div class="wrap hero-grid">
 <div class="hero-copy">
-<p class="meta"><a href="https://nipr.com">Licensed health insurance advisor · NPN 22297742</a></p>
-<p class="hero-q">The right health plan for your life, <em>without losing your doctors.</em></p>
-<p class="lead">I compare private PPO, Marketplace and group plans for business owners, the self-employed and families, and I actually answer the phone.</p>
+<p class="meta"><span class="eb-long">Private health advisory · </span>Tampa · Licensed in 31 states</p>
+<h1>Priced on your health. <em>Built around your doctors.</em></h1>
+<p class="lead hero-lead">I compare private PPO, Marketplace and group plans for business owners, the self-employed and families, and I actually answer the phone.</p>
+</div>
+
+<div class="hero-card">
+<div class="back-card" aria-hidden="true"><svg viewBox="0 0 200 200"><g fill="none" stroke="#EDEDEC"><circle cx="100" cy="100" r="92" stroke-width="5" stroke-dasharray="0.8 4.02" opacity=".45"/><circle cx="100" cy="100" r="85" stroke-width=".6" opacity=".35"/><circle cx="100" cy="100" r="62" stroke-width=".8" opacity=".3"/></g></svg></div>
+<div class="quote-card" id="quote">
+<canvas class="qc-frame" id="qc-frame" aria-hidden="true"></canvas>
+<div class="qc-head"><p class="meta">Redeemable for</p><p class="serial" id="serial"><i>Series</i><b>2026</b></p></div>
+<h2 id="quote-title">One free quote.</h2>
+<div class="qc-advisor"><img class="qc-photo" src="/images/aiden-james-avatar.jpg" alt="Aiden James" width="120" height="152"><p class="sub">30 seconds. I call you with real numbers. You decide.<span>Aiden James · Licensed advisor</span></p></div>
+<p class="card-hello" id="card-hello" hidden></p>
+<form id="quote-form" aria-labelledby="quote-title" novalidate>
+<div class="progress" aria-hidden="true"><span class="on" id="bar-1"></span><span id="bar-2"></span></div>
+<p class="step-label"><span id="step-name">Step 1 of 2 · Your coverage</span></p>
+
+<div class="q-step" id="step-1">
+<fieldset>
+<legend>Who needs coverage?</legend>
+<div class="choice-row">
+<label class="choice"><input type="radio" name="situation" value="Just me" id="s-me"><span>Just me</span></label>
+<label class="choice"><input type="radio" name="situation" value="My family" id="s-family"><span>My family</span></label>
+<label class="choice"><input type="radio" name="situation" value="Self-employed" id="s-self"><span>Self-employed</span></label>
+<label class="choice"><input type="radio" name="situation" value="My business" id="s-biz"><span>My business</span></label>
+<label class="choice"><input type="radio" name="situation" value="Lost my coverage" id="s-lost"><span>Lost my coverage</span></label>
+</div>
+</fieldset>
+<div class="qf"><label for="q-state">Your state</label><select id="q-state" name="state" autocomplete="address-level1" required><option value="">Select your state</option></select></div>
+<p class="q-note" id="q-state-note" aria-live="polite"></p>
+<button class="btn block" id="q-next" type="button">Next: where to send it <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+<p class="safe"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>No fee. Your information is never sold.</p>
+</div>
+
+<div class="q-step" id="step-2" hidden>
+<div class="q-row">
+<div class="qf"><label for="q-name">First name</label><input id="q-name" name="name" type="text" autocomplete="given-name" required></div>
+<div class="qf"><label for="q-phone">Phone number</label><input id="q-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+</div>
+<div class="qf optional"><label for="q-ages">Ages of everyone to cover <small>(optional)</small></label><input id="q-ages" name="ages" type="text" inputmode="numeric" autocomplete="off" placeholder="For example: 34, 31, 6"></div>
+<div class="qf optional"><label for="q-ref">Who referred you? <small>(optional)</small></label><input id="q-ref" name="referred" type="text" autocomplete="off"></div>
+<input type="hidden" name="topic" id="q-topic" value="">
+<input type="hidden" name="card" id="q-card" value="">
+<div class="hp" aria-hidden="true"><label for="q-hp">Leave this empty</label><input id="q-hp" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+<label class="consent"><input type="checkbox" name="consent" id="q-consent"><span>I agree to receive calls and texts from Aiden James Health about health insurance at the number above. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Consent isn’t required to get a quote.</span></label>
+<p class="fine">By submitting, you agree to the <a href="/privacy">Privacy Policy</a>.</p>
+<button class="btn block" id="q-submit" type="submit">See my plans, free <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+<div class="q-foot"><button class="link-btn" id="q-back" type="button">Back</button><p class="safe">Your information is never sold.</p></div>
+</div>
+<p class="q-status" id="q-status" role="status" aria-live="polite"></p>
+</form>
+<div class="q-done" id="q-done" tabindex="-1" hidden>
+<p class="h3">Thanks, <span data-name>there</span>.</p>
+<p>I’ll call you soon from (813) 451-0821 with real plans and prices. Rather choose the time yourself?</p>
+<a class="btn" href="#book">Pick a time</a>
+</div>
+</div>
+</div>
+
+<div class="hero-more">
+<p class="lead hero-lead-m">I compare private PPO, Marketplace and group plans for business owners, the self-employed and families, and I actually answer the phone.</p>
 <p class="free-line">Free to you. The carriers pay me, never you.</p>
 <ul class="even-if" aria-label="I can still help">
 <li>Even if you earn too much for tax credits</li>
@@ -474,54 +553,46 @@ button{font:inherit}
 </ul>
 <p class="hero-promise">If your current plan is the right one, I’ll tell you to keep it.</p>
 </div>
-
-<div class="quote-card" id="quote">
-<h2 id="quote-title">See what you’d actually pay</h2>
-<p class="sub">30 seconds. I call you with real numbers. You decide.</p>
-<form id="quote-form" aria-labelledby="quote-title" novalidate>
-<div class="q-fields" id="q-fields">
-<fieldset>
-<legend>Point to your situation</legend>
-<div class="choice-row">
-<label class="choice"><input type="radio" name="situation" value="Just me"><span>Just me</span></label>
-<label class="choice"><input type="radio" name="situation" value="My family"><span>My family</span></label>
-<label class="choice"><input type="radio" name="situation" value="Self-employed"><span>Self-employed</span></label>
-<label class="choice"><input type="radio" name="situation" value="My business"><span>My business</span></label>
-<label class="choice"><input type="radio" name="situation" value="Lost my coverage"><span>Lost my coverage</span></label>
-</div>
-</fieldset>
-<div class="q-row">
-<div class="qf"><label for="q-name">First name</label><input id="q-name" name="name" type="text" autocomplete="given-name" required></div>
-<div class="qf"><label for="q-phone">Phone number</label><input id="q-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
-</div>
-<div class="qf"><label for="q-state">Your state</label><select id="q-state" name="state" autocomplete="address-level1" required><option value="">Select your state</option></select></div>
-<p class="q-note" id="q-state-note" aria-live="polite"></p>
-<div class="qf optional"><label for="q-ref">Who referred you? (optional)</label><input id="q-ref" name="referred" type="text" autocomplete="off"></div>
-<input type="hidden" name="topic" value="">
-<div class="hp" aria-hidden="true"><label for="q-hp">Leave this empty</label><input id="q-hp" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
-<label class="consent"><input type="checkbox" name="consent"><span>I agree to receive calls and texts from Aiden James Health about health insurance at the number above. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Consent isn’t required to get a quote.</span></label>
-<p class="fine">By submitting, you agree to the <a href="/privacy">Privacy Policy</a>.</p>
-<button class="btn" id="q-submit" type="submit">See my plans, free <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-<p class="safe"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Your information is never sold.</p>
-</div>
-<p class="q-status" id="q-status" role="status" aria-live="polite"></p>
-<div class="q-done" id="q-done" tabindex="-1" hidden>
-<p class="h3">Thanks, <span data-name>there</span>.</p>
-<p>I’ll call you soon from (813) 451-0821 with real plans and prices. Rather choose the time yourself?</p>
-<a class="btn" href="#book">Pick a time</a>
-</div>
-</form>
-</div>
-</div>
 </div>
 </section>
 
 <section class="cred" aria-label="Why clients trust Aiden James Health">
 <div class="wrap">
-<div class="cred-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><div><strong>Licensed in 31 states</strong><span>NPN 22297742, verifiable on NIPR</span></div></div>
-<div class="cred-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9.5c0-1.4 1.3-2.5 3-2.5s3 1 3 2.3c0 2.9-6 1.7-6 4.7 0 1.3 1.3 2.5 3 2.5s3-1.1 3-2.5"/><path d="M12 5.5v1.5M12 17v1.5"/></svg><div><strong>$0 fee</strong><span>Carriers pay me. Your premium doesn’t change.</span></div></div>
-<div class="cred-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><div><strong>Year-round private plans</strong><span>Apply any month, no life event needed</span></div></div>
-<div class="cred-item"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><div><strong>Concierge service</strong><span>My direct line, not a 1-800 number</span></div></div>
+<div class="cred-panel">
+<div class="cred-item"><b>31 states</b><span>Licensed. NPN 22297742, verifiable on NIPR</span></div>
+<div class="cred-item"><b>$0 fee</b><span>Carriers pay me. Your premium doesn’t change.</span></div>
+<div class="cred-item"><b>Any month</b><span>Private plans, no life event needed</span></div>
+<div class="cred-item"><b>Direct line</b><span>My number, not a 1-800 number</span></div>
+</div>
+</div>
+</section>
+
+<section id="pricing" class="pricing">
+<div class="wrap">
+<div class="section-head">
+<p class="meta">How pricing works</p>
+<h2 class="h2">Two ways a health plan sets your price.</h2>
+<p class="lead">Marketplace plans price everyone together. Private PPO plans price you on your own health. If you’re healthy, that difference is the whole conversation.</p>
+</div>
+<div class="price-grid">
+<article class="price-panel">
+<p class="meta">Marketplace</p>
+<h3 class="h3">Priced as a pool</h3>
+<svg class="pool" id="pool-a" viewBox="0 0 440 150" role="img" aria-label="A grid of identical dots: everyone in the pool pays the same rate for their age and area"></svg>
+<p>Your health history doesn’t change your price. Age, area and tobacco use do. Pre-existing conditions are always covered, and tax credits depend on income.</p>
+</article>
+<article class="price-panel">
+<p class="meta">Private PPO</p>
+<h3 class="h3">Priced on you</h3>
+<svg class="pool" id="pool-b" viewBox="0 0 440 150" role="img" aria-label="The same grid with one dot marked: your price is based on your own health history"></svg>
+<p>Medically underwritten, so your own health history sets the price along with age and state. Healthy people can pay less, and you can apply any month of the year.</p>
+</article>
+</div>
+<div class="cliff">
+<b>$63,840</b>
+<p>Under current rules, Marketplace tax credits stop at 400% of the poverty line. For one person on a 2027 plan, that’s $63,840 a year. Earn more and you pay the full Marketplace price, which is where a private PPO often costs less.</p>
+<a class="btn" href="#quote" data-focus-quote data-topic="Over the subsidy limit">Compare both for me</a>
+</div>
 </div>
 </section>
 
@@ -544,6 +615,8 @@ button{font:inherit}
 <a class="sit" href="#quote" data-topic="Missed open enrollment"><strong>Missed open enrollment</strong><span>Private plans enroll year-round</span></a>
 <a class="sit" href="#quote" data-situation="Just me" data-topic="Turning 26"><strong>Turning 26</strong><span>Aging off a parent’s plan</span></a>
 <a class="sit" href="#quote" data-topic="Premium went up"><strong>Premium went up</strong><span>Compare before you renew</span></a>
+<a class="sit" href="#quote" data-topic="Retiring before 65"><strong>Retiring before 65</strong><span>Coverage until Medicare starts</span></a>
+<a class="sit" href="#quote" data-topic="Moving to a new state"><strong>Moving to a new state</strong><span>Your plan may not move with you</span></a>
 </div>
 </div>
 </div>
@@ -563,8 +636,7 @@ button{font:inherit}
 </div>
 </section>
 
-<section id="about" class="about has-bg-word">
-<div class="bg-word" aria-hidden="true">Aiden</div>
+<section id="about" class="about">
 <div class="wrap about-inner">
 <div class="about-text">
 <h2 class="h2">I’m Aiden James.</h2>
@@ -572,9 +644,13 @@ button{font:inherit}
 <p class="lead">I’m a licensed health and life insurance advisor based in Tampa. I work with business owners, the self-employed and families across 31 states, with a focus on private PPOs, medical underwriting and group plans for small businesses.</p>
 <p class="lead">Before insurance, I spent years in one-on-one client consultation in skincare and medical esthetics. The lesson carried over: people don’t want forty options. They want someone who listens, explains plainly and tells them the truth, even when the truth is “keep what you have.”</p>
 <p class="lead"><strong>How I’m paid:</strong> You never pay me. When you enroll, the carrier pays my commission, and your premium is the same as if you applied on your own. If I recommend keeping your plan, I earn nothing, and I’ll still recommend it.</p>
-<div class="about-actions"><a class="btn" href="#quote">See my plans</a><a class="text-link" href="https://nipr.com">Verify my license on NIPR</a></div>
+<div class="about-actions"><a class="btn" href="#quote" data-focus-quote>Get a quote</a><a class="text-link" href="https://nipr.com" target="_blank" rel="noopener">Verify my license on NIPR</a></div>
 </div>
-<figure><img src="/images/aiden-james-headshot.jpg" alt="Aiden James" width="800" height="1200" loading="lazy" decoding="async"></figure>
+<figure class="portrait">
+<img src="/images/aiden-james-portrait.jpg" alt="Aiden James" width="480" height="608" decoding="async">
+<svg viewBox="0 0 300 380" aria-hidden="true"><g fill="none" stroke="#111111"><ellipse cx="150" cy="190" rx="124" ry="158" stroke-width="1.6"/><path id="oval-ring" stroke-width="0.8"/><ellipse cx="150" cy="190" rx="146" ry="180" stroke-width="1"/></g></svg>
+<figcaption>NPN 22297742</figcaption>
+</figure>
 </div>
 </section>
 
@@ -594,8 +670,7 @@ button{font:inherit}
 </div>
 </section>
 
-<section id="compare" class="compare-band has-bg-word">
-<div class="bg-word" aria-hidden="true">Compare</div>
+<section id="compare" class="compare-band dark">
 <div class="wrap">
 <div class="section-head">
 <h2 class="h2">Private PPO, Marketplace or COBRA?</h2>
@@ -606,40 +681,14 @@ button{font:inherit}
 <table class="ctable">
 <caption class="sr-only">How Private PPO, Marketplace and COBRA plans compare</caption>
 <thead><tr><th scope="col">What matters</th><th scope="col" class="hl">Private PPO</th><th scope="col">Marketplace</th><th scope="col">COBRA</th></tr></thead>
-<tbody>
-<tr><th scope="row">Enroll any time of year</th>
-<td><span class="mark y"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Yes, year-round</span></span></td>
-<td><span class="mark n"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Open Enrollment or a life event</span></span></td>
-<td><span class="mark m"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 12h12"/></svg><span>Within 60 days of losing coverage</span></span></td></tr>
-<tr><th scope="row">Keep your current doctors</th>
-<td><span class="mark m"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 12h12"/></svg><span>If they’re in network. I check first.</span></span></td>
-<td><span class="mark m"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 12h12"/></svg><span>Varies by plan</span></span></td>
-<td><span class="mark y"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Same plan you have now</span></span></td></tr>
-<tr><th scope="row">Doctors nationwide, no referrals</th>
-<td><span class="mark y"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Often</span></span></td>
-<td><span class="mark m"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 12h12"/></svg><span>Often regional</span></span></td>
-<td><span class="mark m"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 12h12"/></svg><span>Same as your current plan</span></span></td></tr>
-<tr><th scope="row">Pre-existing conditions covered</th>
-<td><span class="mark m"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 12h12"/></svg><span>May be excluded or affect approval</span></span></td>
-<td><span class="mark y"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Always</span></span></td>
-<td><span class="mark y"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Yes</span></span></td></tr>
-<tr><th scope="row">Income-based tax credits</th>
-<td><span class="mark n"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>No</span></span></td>
-<td><span class="mark y"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>If you qualify</span></span></td>
-<td><span class="mark n"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>No</span></span></td></tr>
-<tr><th scope="row">What sets your price</th>
-<td>Age, state and health history</td>
-<td>Age, state and tobacco use; credits depend on income</td>
-<td>Full premium plus up to 2%</td></tr>
-</tbody>
+<tbody id="ctable-body"></tbody>
 </table>
 </div>
 <p class="dark-note">Some private plans are full major medical insurance. Others are limited-benefit plans that pay set amounts toward care. I’ll tell you which is which before you apply.</p>
 </div>
 </section>
 
-<section id="states" class="states has-bg-word">
-<div class="bg-word" aria-hidden="true">31</div>
+<section id="states" class="states">
 <div class="wrap states-inner">
 <div class="states-text">
 <h2 class="h2">Licensed in 31 states. Based in Tampa.</h2>
@@ -649,13 +698,13 @@ button{font:inherit}
 <select id="state-select"><option value="">Choose a state</option></select>
 </div>
 <p class="state-result" id="state-result" aria-live="polite">Choose your state, or tap it on the map.</p>
-<div class="legend"><span><i style="background:#111"></i>Licensed</span><span><i style="border:1px solid #A8A49D"></i>Trusted partner</span></div>
+<div class="legend"><span><i class="k-lic"></i>Licensed</span><span><i class="k-par"></i>Trusted partner</span></div>
 </div>
 <div class="tilemap" id="tilemap" role="group" aria-label="Map of US states. Licensed states are filled in black."></div>
 </div>
 </section>
 
-<section id="book" class="book">
+<section id="book" class="book dark">
 <div class="wrap book-inner">
 <div class="book-text">
 <h2 class="h2">Let’s start with you.</h2>
@@ -676,47 +725,31 @@ button{font:inherit}
 </div>
 </div>
 <div class="scheduler" id="scheduler">
-<!-- Calendly inline widget begin (widget.js is loaded lazily by the script at the bottom of the page) -->
-<div class="calendly-inline-widget" data-url="https://calendly.com/aidenjameshealth/ajh?background_color=121212&amp;text_color=f5f5f5&amp;primary_color=e8e6e1" style="min-width:320px;height:700px;"></div>
-<!-- Calendly inline widget end -->
+<!-- Calendly inline widget (widget.js is loaded when this section gets close) -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/aidenjameshealth/ajh?background_color=171717&amp;text_color=ededec&amp;primary_color=ededec" style="min-width:320px;height:700px;"></div>
 <div class="scheduler-fallback">
-<p>Loading available times.</p>
+<canvas id="sched-art" aria-hidden="true"></canvas>
+<p class="meta">Booking calendar</p>
+<p class="h3">Loading available times.</p>
 <a class="btn btn-light" href="https://calendly.com/aidenjameshealth/ajh" target="_blank" rel="noopener">Open the booking page</a>
 </div>
 </div>
 </div>
 </section>
 
-<!--
-  Client reviews: add a section here once you have real reviews to share (with permission):
-  heading, Google rating, and two to four reviews with first name, last initial and situation.
--->
-
 <section id="faq" class="faq-section">
 <div class="wrap faq-inner">
 <div class="section-head" style="margin-bottom:0">
 <h2 class="h2">Straight answers.</h2>
 <p class="lead">The questions I hear most, answered plainly. Don’t see yours? Call or text <a class="text-link" href="tel:+18134510821">(813) 451-0821</a>.</p>
+<a class="btn" href="#quote" data-focus-quote style="justify-self:start">Get a quote</a>
 </div>
-<div class="faq">
-<details><summary>What does it cost to work with you?</summary><p>Nothing. Carriers pay me a commission when you enroll, so the quote, the comparison, enrollment help and ongoing support are free. Your premium is the same either way.</p></details>
-<details><summary>Can I only sign up during Open Enrollment?</summary><p>No. Private, medically underwritten plans accept applications any time of year, with no life event needed, and approval can come within days. For Marketplace plans, 2027 Open Enrollment runs November 1 to January 15, and a life event like losing job coverage, moving or having a baby opens a 60-day window.</p></details>
-<details><summary>Is private insurance expensive?</summary><p>Often it costs less. Private plans are medically underwritten, so healthy people can pay less than they would for a Marketplace plan without tax credits. Your price depends on your age, state, household and health history, which is why I quote it personally instead of guessing.</p></details>
-<details><summary>Are these year-long contracts?</summary><p>Usually not. Many private plans bill month to month with no long-term contract, so you can change or cancel as your needs change. I’ll confirm the terms of any plan before you apply.</p></details>
-<details><summary>Will a PPO cover me anywhere I go?</summary><p>Many PPO plans use national networks, so you can see doctors across the country without referrals. Networks vary by plan, so I check your doctors and hospitals before you apply.</p></details>
-<details><summary>What if I have a pre-existing condition?</summary><p>Tell me up front. Marketplace plans always cover pre-existing conditions. Private plans look at your health history: many conditions can still be covered, but some may be excluded or lead to a decline. I’ll be upfront about what’s realistic, and if private isn’t the right fit, I’ll tell you.</p></details>
-<details><summary>Is a private PPO the same as major medical insurance?</summary><p>Not always. Some private plans are comprehensive major medical. Others are limited-benefit plans that pay set amounts toward care. I’ll tell you exactly which one you’re looking at.</p></details>
-<details><summary>Why get private insurance if my employer offers benefits?</summary><p>Sometimes you shouldn’t. Employer plans can be a great deal when your employer pays a big share. But family coverage through work is often expensive, and a private plan stays with you if you change jobs. I’ll compare both side by side.</p></details>
-<details><summary>I’m leaving my job. Is COBRA my only option?</summary><p>No. COBRA keeps your current plan, but you usually pay the full premium plus up to 2%. Losing job coverage also opens a 60-day Marketplace window, and private plans accept applications year-round. I’ll compare all three before your deadline.</p></details>
-<details><summary>What if I’m already well covered?</summary><p>I’ll tell you, and that’s it. No follow-up sales calls.</p></details>
-<details><summary>What happens after I enroll?</summary><p>I stay your point of contact. Claims, billing and renewal questions come straight to me.</p></details>
-<details><summary>Can you help my business offer coverage?</summary><p>Yes. I help small businesses compare and set up group health plans, and I can show you individual options for your team too.</p></details>
-</div>
+<div class="faq" id="faq-list"></div>
 </div>
 </section>
 </main>
 
-<footer class="site-footer">
+<footer class="site-footer dark">
 <div class="wrap">
 <div class="refer">
 <p>Know someone who’s overpaying for coverage? Send them my way.</p>
@@ -733,9 +766,9 @@ button{font:inherit}
 </div>
 <div class="foot-cols">
 <div><h2>Aiden James Health</h2><ul><li><span>Private health advisory for business owners, the self-employed and families</span></li><li><span>Based in Tampa, licensed in 31 states</span></li></ul></div>
-<div><h2>Explore</h2><ul><li><a href="#who">Who I help</a></li><li><a href="#plans">Coverage</a></li><li><a href="#compare">Compare options</a></li><li><a href="#about">Meet Aiden</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-<div><h2>Contact</h2><ul><li><a href="tel:+18134510821">(813) 451-0821</a></li><li><a href="mailto:ajh@aidenjameshealth.us">ajh@aidenjameshealth.us</a></li><li><a href="#quote">See my plans</a></li><li><a href="#book">Book a call</a></li></ul></div>
-<div><h2>Credentials</h2><ul><li><span>NPN 22297742</span></li><li><a href="https://nipr.com">Verify on NIPR</a></li><li><a href="/privacy">Privacy Policy</a></li></ul></div>
+<div><h2>Explore</h2><ul><li><a href="#pricing">How pricing works</a></li><li><a href="#who">Who I help</a></li><li><a href="#plans">Coverage</a></li><li><a href="#compare">Compare options</a></li><li><a href="#about">Meet Aiden</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+<div><h2>Contact</h2><ul><li><a href="tel:+18134510821">(813) 451-0821</a></li><li><a href="mailto:ajh@aidenjameshealth.us">ajh@aidenjameshealth.us</a></li><li><a href="#quote" data-focus-quote>Get a quote</a></li><li><a href="#book">Book a call</a></li></ul></div>
+<div><h2>Credentials</h2><ul><li><span>NPN 22297742</span></li><li><a href="https://nipr.com" target="_blank" rel="noopener">Verify on NIPR</a></li><li><a href="/privacy">Privacy Policy</a></li></ul></div>
 </div>
 <div class="legal">
 <p>Licensed in AL, AR, CO, DE, FL, GA, IA, IL, IN, KS, KY, LA, MD, MI, MO, MS, MT, NC, NE, NV, OH, OK, SC, SD, TN, TX, UT, VA, WI, WV, and WY.</p>
@@ -749,16 +782,20 @@ button{font:inherit}
 </div>
 </footer>
 
-<div class="action-bar" aria-label="Quick actions">
-<a class="btn btn-light" href="#quote">See my plans</a>
+<div class="action-bar" id="action-bar" aria-label="Quick actions">
+<a class="btn btn-light" href="#quote" data-focus-quote>Get a quote</a>
 <a class="btn btn-ghost-dark" href="sms:+18134510821">Text me</a>
 </div>
 
 <script>
 (function () {
-  // Mobile menu
+  'use strict';
+  var DRAFT = false; // true = demo mode, nothing is sent
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- menu ---------- */
   var header = document.querySelector('.site-header');
-  var menuBtn = document.querySelector('.menu-btn');
+  var menuBtn = document.getElementById('menu-btn');
   var nav = document.getElementById('primary-nav');
   function setMenu(open) {
     header.setAttribute('data-open', open ? 'true' : 'false');
@@ -769,100 +806,168 @@ button{font:inherit}
   nav.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
 
-  // States
+  /* ---------- states ---------- */
   var states = [['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],['PA','Pennsylvania'],['RI','Rhode Island'],['SC','South Carolina'],['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']];
   var licensed = ['AL','AR','CO','DE','FL','GA','IA','IL','IN','KS','KY','LA','MD','MI','MO','MS','MT','NC','NE','NV','OH','OK','SC','SD','TN','TX','UT','VA','WI','WV','WY'];
   function nameOf(code) { for (var i = 0; i < states.length; i++) { if (states[i][0] === code) return states[i][1]; } return code; }
 
-  // Quote form
+  /* ---------- business card link: ?card=0137 (or #card-0137) ---------- */
+  var cardNo = '';
+  try {
+    var q = new URLSearchParams(window.location.search).get('card') || '';
+    var h = (window.location.hash.match(/^#card-(\d{1,4})$/) || [])[1] || '';
+    cardNo = (q || h).replace(/\D/g, '').slice(0, 4);
+  } catch (err) {}
+  if (cardNo) {
+    cardNo = ('0000' + cardNo).slice(-4);
+    document.getElementById('serial').innerHTML = '<i>No.</i><b>' + cardNo + '</b>';
+    var hello = document.getElementById('card-hello');
+    hello.textContent = 'Welcome. Card No. ' + cardNo + ' is good for one free quote. Two quick steps and it’s yours.';
+    hello.hidden = false;
+    document.getElementById('q-card').value = cardNo;
+  }
+
+  /* ---------- quote form ---------- */
   var qform = document.getElementById('quote-form');
   var qState = document.getElementById('q-state');
   var qNote = document.getElementById('q-state-note');
   var qStatus = document.getElementById('q-status');
   var qBtn = document.getElementById('q-submit');
+  var step1 = document.getElementById('step-1'), step2 = document.getElementById('step-2');
+  var stepName = document.getElementById('step-name');
   states.forEach(function (s) { var o = document.createElement('option'); o.value = s[0]; o.textContent = s[1]; qState.appendChild(o); });
   function updateNote() {
     var c = qState.value;
     qNote.textContent = (c && licensed.indexOf(c) === -1) ? 'I’m not licensed in ' + nameOf(c) + ' yet. Send this anyway and I’ll connect you with an advisor I trust.' : '';
   }
   qState.addEventListener('change', updateNote);
+  function showStep(n) {
+    step1.hidden = n !== 1; step2.hidden = n !== 2;
+    document.getElementById('bar-2').className = n === 2 ? 'on' : '';
+    stepName.textContent = n === 1 ? 'Step 1 of 2 · Your coverage' : 'Step 2 of 2 · Where to send it';
+    qStatus.textContent = '';
+    drawFrame();
+  }
+  document.getElementById('q-next').addEventListener('click', function () {
+    if (!qState.value) { qStatus.textContent = 'Please choose your state.'; qState.focus(); return; }
+    showStep(2);
+    try { document.getElementById('q-name').focus({ preventScroll: true }); } catch (err) {}
+  });
+  document.getElementById('q-back').addEventListener('click', function () { showStep(1); qState.focus(); });
+
   function pickSituation(v) {
     var radios = qform.querySelectorAll('input[name="situation"]');
     for (var i = 0; i < radios.length; i++) { if (radios[i].value === v) radios[i].checked = true; }
   }
-  document.querySelectorAll('[data-situation], [data-topic]').forEach(function (a) {
+  document.querySelectorAll('[data-situation], [data-topic], [data-focus-quote]').forEach(function (a) {
     a.addEventListener('click', function () {
       if (a.getAttribute('data-situation')) pickSituation(a.getAttribute('data-situation'));
-      qform.elements.topic.value = a.getAttribute('data-topic') || '';
-      setTimeout(function () { try { document.getElementById('q-name').focus({ preventScroll: true }); } catch (err) {} }, 500);
+      if (a.hasAttribute('data-topic')) document.getElementById('q-topic').value = a.getAttribute('data-topic') || '';
+      setTimeout(function () {
+        var target = step2.hidden ? (qform.querySelector('input[name="situation"]:checked') ? qState : document.getElementById('s-me')) : document.getElementById('q-name');
+        try { target.focus({ preventScroll: true }); } catch (err) {}
+      }, reduce ? 0 : 450);
     });
   });
+
   function fail(msg, el) { qStatus.textContent = msg; if (el) el.focus(); }
   qform.addEventListener('submit', function (e) {
     e.preventDefault();
+    if (step2.hidden) { document.getElementById('q-next').click(); return; }
     var name = qform.elements.name.value.trim();
     var phone = qform.elements.phone.value.trim();
     if (!name) return fail('Please add your first name.', qform.elements.name);
     if (phone.replace(/\D/g, '').length < 10) return fail('Please add a phone number with area code.', qform.elements.phone);
-    if (!qState.value) return fail('Please choose your state.', qState);
+    if (!qState.value) { showStep(1); return fail('Please choose your state.', qState); }
     var sit = qform.querySelector('input[name="situation"]:checked');
     var data = {
-      _subject: 'New quote request: ' + name + ' (' + qState.value + ')',
+      _subject: 'New quote request: ' + name + ' (' + qState.value + ')' + (cardNo ? ' · card ' + cardNo : ''),
       _template: 'table',
       _honey: qform.elements._honey.value,
       'First name': name,
       'Phone': phone,
       'State': nameOf(qState.value) + (licensed.indexOf(qState.value) === -1 ? ' (not licensed: refer to partner)' : ''),
       'Situation': sit ? sit.value : 'Not chosen',
-      'Came from': qform.elements.topic.value || 'Quote form',
+      'Ages': qform.elements.ages.value.trim() || 'Not given',
+      'Came from': (cardNo ? 'Business card No. ' + cardNo : '') || qform.elements.topic.value || 'Quote form',
       'Referred by': qform.elements.referred.value.trim() || 'None',
       'Calls and texts consent': qform.elements.consent.checked ? 'Yes, checked the consent box' : 'No',
       'Submitted': new Date().toString()
     };
+    function done() {
+      qform.hidden = true;
+      var d = document.getElementById('q-done');
+      d.querySelector('[data-name]').textContent = name;
+      d.hidden = false;
+      d.focus();
+      drawFrame();
+    }
+    if (DRAFT) { done(); return; }
     qBtn.disabled = true;
-    qStatus.textContent = '';
     fetch('https://formsubmit.co/ajax/ajh@aidenjameshealth.us', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
-    })
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        if (String(d.success) !== 'true') throw new Error(d.message || 'Not sent');
-        document.getElementById('q-fields').hidden = true;
-        var done = document.getElementById('q-done');
-        done.querySelector('[data-name]').textContent = name;
-        done.hidden = false;
-        done.focus();
-      })
-      .catch(function () {
-        qStatus.innerHTML = 'That didn’t go through. Call or text me at <a href="tel:+18134510821">(813) 451-0821</a>, or <a href="#book">pick a time</a>.';
-      })
-      .then(function () { qBtn.disabled = false; });
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data)
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (String(d.success) !== 'true') throw new Error(d.message || 'Not sent');
+      done();
+    }).catch(function () {
+      qStatus.innerHTML = 'That didn’t go through. Call or text me at <a href="tel:+18134510821">(813) 451-0821</a>, or <a href="#book">pick a time</a>.';
+    }).then(function () { qBtn.disabled = false; });
   });
 
-  // State checker: dropdown + tile map share one selection
+  /* ---------- comparison table ---------- */
+  var Y = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  var N = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+  var M = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M6 12h12"/></svg>';
+  function cell(k, t) { if (!k) return '<td>' + t + '</td>'; var i = { y: Y, n: N, m: M }[k]; return '<td><span class="mark ' + k + '">' + i + '<span>' + t + '</span></span></td>'; }
+  var rows = [
+    ['Enroll any time of year', ['y', 'Yes, year-round'], ['n', 'Open Enrollment or a life event'], ['m', 'Within 60 days of losing coverage']],
+    ['Keep your current doctors', ['m', 'If they’re in network. I check first.'], ['m', 'Varies by plan'], ['y', 'Same plan you have now']],
+    ['Doctors nationwide, no referrals', ['y', 'Often'], ['m', 'Often regional'], ['m', 'Same as your current plan']],
+    ['Pre-existing conditions covered', ['m', 'May be excluded or affect approval'], ['y', 'Always'], ['y', 'Yes']],
+    ['Income-based tax credits', ['n', 'No'], ['y', 'If you qualify'], ['n', 'No']],
+    ['What sets your price', ['', 'Age, state and health history'], ['', 'Age, state and tobacco use; credits depend on income'], ['', 'Full premium plus up to 2%']]
+  ];
+  document.getElementById('ctable-body').innerHTML = rows.map(function (r) {
+    return '<tr><th scope="row">' + r[0] + '</th>' + cell(r[1][0], r[1][1]) + cell(r[2][0], r[2][1]) + cell(r[3][0], r[3][1]) + '</tr>';
+  }).join('');
+
+  /* ---------- FAQ ---------- */
+  var faqs = [
+    ['What does it cost to work with you?', 'Nothing. Carriers pay me a commission when you enroll, so the quote, the comparison, enrollment help and ongoing support are free. Your premium is the same either way.'],
+    ['Can I only sign up during Open Enrollment?', 'No. Private, medically underwritten plans accept applications any time of year, with no life event needed, and approval can come within days. For Marketplace plans, 2027 Open Enrollment runs November 1 to January 15, and a life event like losing job coverage, moving or having a baby opens a 60-day window.'],
+    ['I earn too much for tax credits. What are my options?', 'Under current rules, Marketplace tax credits stop at 400% of the poverty line, which is $63,840 for one person on a 2027 plan. Above that, you pay the full Marketplace price. If you’re healthy, a private PPO often costs less. I’ll price both so you can see the difference.'],
+    ['Is private insurance expensive?', 'Often it costs less. Private plans are medically underwritten, so healthy people can pay less than they would for a Marketplace plan without tax credits. Your price depends on your age, state, household and health history, which is why I quote it personally instead of guessing.'],
+    ['Are these year-long contracts?', 'Usually not. Many private plans bill month to month with no long-term contract, so you can change or cancel as your needs change. I’ll confirm the terms of any plan before you apply.'],
+    ['Will a PPO cover me anywhere I go?', 'Many PPO plans use national networks, so you can see doctors across the country without referrals. Networks vary by plan, so I check your doctors and hospitals before you apply.'],
+    ['What if I have a pre-existing condition?', 'Tell me up front. Marketplace plans always cover pre-existing conditions. Private plans look at your health history: many conditions can still be covered, but some may be excluded or lead to a decline. I’ll be upfront about what’s realistic, and if private isn’t the right fit, I’ll tell you.'],
+    ['Is a private PPO the same as major medical insurance?', 'Not always. Some private plans are comprehensive major medical. Others are limited-benefit plans that pay set amounts toward care. I’ll tell you exactly which one you’re looking at.'],
+    ['Why get private insurance if my employer offers benefits?', 'Sometimes you shouldn’t. Employer plans can be a great deal when your employer pays a big share. But family coverage through work is often expensive, and a private plan stays with you if you change jobs. I’ll compare both side by side.'],
+    ['I’m leaving my job. Is COBRA my only option?', 'No. COBRA keeps your current plan, but you usually pay the full premium plus up to 2%. Losing job coverage also opens a 60-day Marketplace window, and private plans accept applications year-round. I’ll compare all three before your deadline.'],
+    ['What if I’m already well covered?', 'I’ll tell you, and that’s it. No follow-up sales calls.'],
+    ['What happens after I enroll?', 'I stay your point of contact. Claims, billing and renewal questions come straight to me.'],
+    ['Can you help my business offer coverage?', 'Yes. I help small businesses compare and set up group health plans, and I can show you individual options for your team too.']
+  ];
+  document.getElementById('faq-list').innerHTML = faqs.map(function (f) { return '<details><summary>' + f[0] + '</summary><p>' + f[1] + '</p></details>'; }).join('');
+
+  /* ---------- state map ---------- */
   var pos = {AK:[0,0],ME:[10,0],VT:[9,1],NH:[10,1],WA:[0,2],ID:[1,2],MT:[2,2],ND:[3,2],MN:[4,2],IL:[5,2],WI:[6,2],MI:[7,2],NY:[8,2],RI:[9,2],MA:[10,2],OR:[0,3],NV:[1,3],WY:[2,3],SD:[3,3],IA:[4,3],IN:[5,3],OH:[6,3],PA:[7,3],NJ:[8,3],CT:[9,3],CA:[0,4],UT:[1,4],CO:[2,4],NE:[3,4],MO:[4,4],KY:[5,4],WV:[6,4],VA:[7,4],MD:[8,4],DE:[9,4],AZ:[1,5],NM:[2,5],KS:[3,5],AR:[4,5],TN:[5,5],NC:[6,5],SC:[7,5],DC:[8,5],OK:[3,6],LA:[4,6],MS:[5,6],AL:[6,6],GA:[7,6],HI:[0,7],TX:[3,7],FL:[8,7]};
-  var map = document.getElementById('tilemap');
-  var select = document.getElementById('state-select');
-  var result = document.getElementById('state-result');
-  var tiles = {};
+  var map = document.getElementById('tilemap'), select = document.getElementById('state-select'), result = document.getElementById('state-result'), tiles = {};
   function choose(code) {
     Object.keys(tiles).forEach(function (c) { tiles[c].setAttribute('aria-pressed', c === code ? 'true' : 'false'); });
     select.value = code || '';
     if (!code) { result.textContent = 'Choose your state, or tap it on the map.'; return; }
     qState.value = code; updateNote();
     var name = nameOf(code);
-    if (licensed.indexOf(code) !== -1) {
-      result.innerHTML = 'I’m licensed in ' + name + '. <a href="#quote">See what you’d pay</a>.';
-    } else {
-      result.innerHTML = 'I’m not licensed in ' + name + ' yet. <a href="#quote">Send me your details</a> and I’ll introduce you to an advisor I trust.';
-    }
+    result.innerHTML = licensed.indexOf(code) !== -1
+      ? 'I’m licensed in ' + name + '. <a href="#quote" data-go>See what you’d pay</a>.'
+      : 'I’m not licensed in ' + name + ' yet. <a href="#quote" data-go>Send me your details</a> and I’ll introduce you to an advisor I trust.';
   }
+  result.addEventListener('click', function (e) {
+    if (e.target.closest('[data-go]')) setTimeout(function () { try { qState.focus({ preventScroll: true }); } catch (err) {} }, reduce ? 0 : 450);
+  });
   states.forEach(function (s) {
     var code = s[0], name = s[1], lic = licensed.indexOf(code) !== -1, p = pos[code];
-    var opt = document.createElement('option');
-    opt.value = code; opt.textContent = name; select.appendChild(opt);
+    var opt = document.createElement('option'); opt.value = code; opt.textContent = name; select.appendChild(opt);
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'tile' + (lic ? ' lic' : ''); b.textContent = code;
     b.style.gridColumn = p[0] + 1; b.style.gridRow = p[1] + 1;
@@ -873,40 +978,167 @@ button{font:inherit}
   });
   select.addEventListener('change', function () { choose(select.value); });
 
-  // Load the Calendly scheduler only when the booking section gets close
-  var scheduler = document.getElementById('scheduler');
-  var loaded = false;
-  function loadCalendly() {
-    if (loaded) return; loaded = true;
-    var s = document.createElement('script');
-    s.src = 'https://assets.calendly.com/assets/external/widget.js';
-    s.async = true;
-    s.onload = function () { scheduler.classList.add('loaded'); };
-    document.body.appendChild(s);
-  }
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      if (entries.some(function (e) { return e.isIntersecting; })) { loadCalendly(); io.disconnect(); }
-    }, { rootMargin: '800px 0px' });
-    io.observe(scheduler);
-  } else { loadCalendly(); }
-  document.querySelectorAll('a[href="#book"]').forEach(function (a) { a.addEventListener('click', loadCalendly); });
-
-  // Referral sharing
+  /* ---------- copy link ---------- */
   var siteUrl = 'https://aidenjameshealth.us/';
   var shareStatus = document.getElementById('share-status');
   function copyLink() {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(siteUrl).then(function () { shareStatus.textContent = 'Link copied. Paste it in a text or email.'; }, function () { shareStatus.textContent = 'Share this link: ' + siteUrl; });
-    } else { shareStatus.textContent = 'Share this link: ' + siteUrl; }
+    var ok = function () { shareStatus.textContent = 'Link copied. Paste it in a text or email.'; };
+    var no = function () { shareStatus.textContent = 'Share this link: ' + siteUrl; };
+    try { navigator.clipboard.writeText(siteUrl).then(ok, no); } catch (err) { no(); }
   }
+  document.getElementById('copy-btn').addEventListener('click', copyLink);
   document.getElementById('share-btn').addEventListener('click', function () {
     var data = { title: 'Aiden James Health', text: 'Straight answers on health coverage from Aiden James, a licensed advisor in Tampa.', url: siteUrl };
     if (navigator.share) { navigator.share(data).catch(function () {}); } else { copyLink(); }
   });
-  document.getElementById('copy-btn').addEventListener('click', copyLink);
 
+  /* ---------- Calendly: load only when the booking section gets close ---------- */
+  var scheduler = document.getElementById('scheduler'), calLoaded = false;
+  function loadCalendly() {
+    if (calLoaded) return; calLoaded = true;
+    var sc = document.createElement('script');
+    sc.src = 'https://assets.calendly.com/assets/external/widget.js'; sc.async = true;
+    sc.onload = function () { scheduler.classList.add('loaded'); };
+    document.body.appendChild(sc);
+  }
+  if ('IntersectionObserver' in window) {
+    var calIo = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { loadCalendly(); calIo.disconnect(); } }, { rootMargin: '800px 0px' });
+    calIo.observe(scheduler);
+  } else { loadCalendly(); }
+  document.querySelectorAll('a[href="#book"]').forEach(function (a) { a.addEventListener('click', loadCalendly); });
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  function onScroll() { header.setAttribute('data-scrolled', window.scrollY > 8 ? 'true' : 'false'); }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* ---------- mobile action bar: hidden while the quote card is on screen ---------- */
+  var bar = document.getElementById('action-bar');
+  if ('IntersectionObserver' in window) {
+    var hero = document.getElementById('top');
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { bar.setAttribute('data-show', e.isIntersecting ? 'false' : 'true'); });
+    }, { threshold: 0 });
+    io.observe(hero);
+  }
+
+  /* ---------- ornament: guilloche, gear ticks, dot grid ---------- */
+  var INK = '17,17,17', PAPER = '237,237,236';
+  function sizeCanvas(c) {
+    var r = c.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c.width = Math.max(1, Math.round(r.width * dpr)); c.height = Math.max(1, Math.round(r.height * dpr));
+    var ctx = c.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, r.width, r.height);
+    return { ctx: ctx, w: r.width, h: r.height };
+  }
+  function ring(ctx, cx, cy, r0, a, lobes, k, K) {
+    var ph = 2 * Math.PI * k / K / lobes, n = Math.max(360, Math.round(r0 * 3));
+    ctx.beginPath();
+    for (var i = 0; i <= n; i++) {
+      var t = 2 * Math.PI * i / n, r = r0 + a * Math.sin(lobes * (t + ph));
+      var x = cx + r * Math.cos(t), y = cy + r * Math.sin(t);
+      if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y);
+    }
+    ctx.stroke();
+  }
+  function rrectBand(ctx, x0, y0, x1, y1, rc, amp, wl, K) {
+    // samples along a rounded rectangle with outward normals
+    var pts = [], step = 1.5;
+    function line(ax, ay, bx, by, nx, ny) { var L = Math.hypot(bx - ax, by - ay), n = Math.max(2, Math.floor(L / step)); for (var i = 0; i < n; i++) { var t = i / n; pts.push([ax + (bx - ax) * t, ay + (by - ay) * t, nx, ny]); } }
+    function arc(cx, cy, a0, a1) { var n = Math.max(2, Math.floor(rc * Math.abs(a1 - a0) / step)); for (var i = 0; i < n; i++) { var a = a0 + (a1 - a0) * i / n; pts.push([cx + rc * Math.cos(a), cy + rc * Math.sin(a), Math.cos(a), Math.sin(a)]); } }
+    line(x0 + rc, y0, x1 - rc, y0, 0, -1); arc(x1 - rc, y0 + rc, -Math.PI / 2, 0);
+    line(x1, y0 + rc, x1, y1 - rc, 1, 0); arc(x1 - rc, y1 - rc, 0, Math.PI / 2);
+    line(x1 - rc, y1, x0 + rc, y1, 0, 1); arc(x0 + rc, y1 - rc, Math.PI / 2, Math.PI);
+    line(x0, y1 - rc, x0, y0 + rc, -1, 0); arc(x0 + rc, y0 + rc, Math.PI, 1.5 * Math.PI);
+    var s = [0];
+    for (var i = 1; i < pts.length; i++) s.push(s[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+    var P = s[s.length - 1] + Math.hypot(pts[0][0] - pts[pts.length - 1][0], pts[0][1] - pts[pts.length - 1][1]);
+    var n = Math.round(P / wl);
+    for (var k = 0; k < K; k++) {
+      var ph = k * Math.PI / K;
+      [1, -1].forEach(function (sg) {
+        ctx.beginPath();
+        for (var j = 0; j < pts.length; j++) {
+          var d = sg * amp * Math.sin(2 * Math.PI * n * s[j] / P + ph), p = pts[j];
+          if (j) ctx.lineTo(p[0] + p[2] * d, p[1] + p[3] * d); else ctx.moveTo(p[0] + p[2] * d, p[1] + p[3] * d);
+        }
+        ctx.closePath(); ctx.stroke();
+      });
+    }
+  }
+  function roundRect(ctx, x0, y0, x1, y1, r) {
+    ctx.beginPath(); ctx.moveTo(x0 + r, y0); ctx.arcTo(x1, y0, x1, y1, r); ctx.arcTo(x1, y1, x0, y1, r); ctx.arcTo(x0, y1, x0, y0, r); ctx.arcTo(x0, y0, x1, y0, r); ctx.closePath(); ctx.stroke();
+  }
+
+  var card = document.getElementById('quote');
+  var frame = document.getElementById('qc-frame');
+  function drawFrame() {
+    var g = sizeCanvas(frame), ctx = g.ctx, w = g.w, h = g.h;
+    var small = w < 440, o = small ? 7 : 10, b = small ? 14 : 19, amp = small ? 3 : 4, inn = small ? 21 : 28;
+    ctx.strokeStyle = 'rgba(' + INK + ',.30)'; ctx.lineWidth = 0.8;
+    roundRect(ctx, o, o, w - o, h - o, 8);
+    ctx.strokeStyle = 'rgba(' + INK + ',.20)'; ctx.lineWidth = 0.55;
+    rrectBand(ctx, b, b, w - b, h - b, 6, amp * .85, 15, 2);
+    ctx.strokeStyle = 'rgba(' + INK + ',.26)'; ctx.lineWidth = 0.7;
+    roundRect(ctx, inn, inn, w - inn, h - inn, 4);
+  }
+
+  var heroEl = document.getElementById('top'), heroArt = document.getElementById('hero-art');
+  function drawHero() {
+    var g = sizeCanvas(heroArt), ctx = g.ctx, w = g.w;
+    var hr = heroEl.getBoundingClientRect(), cr = card.getBoundingClientRect();
+    var cx = cr.left - hr.left + cr.width / 2, cy = cr.top - hr.top + cr.height / 2;
+    var R = Math.hypot(cr.width, cr.height) / 2 + (w < 700 ? 18 : 40);
+    ctx.lineWidth = .7; ctx.strokeStyle = 'rgba(' + PAPER + ',.07)';
+    for (var k = 0; k < 5; k++) ring(ctx, cx, cy, R, 11, 56, k, 5);
+    var tr = R + 34, n = Math.round(2 * Math.PI * tr / 9.5);
+    ctx.strokeStyle = 'rgba(' + PAPER + ',.22)'; ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    for (var t = 0; t < n; t++) { var a = 2 * Math.PI * t / n, L = t % 10 === 0 ? 13 : 7; ctx.moveTo(cx + tr * Math.cos(a), cy + tr * Math.sin(a)); ctx.lineTo(cx + (tr + L) * Math.cos(a), cy + (tr + L) * Math.sin(a)); }
+    ctx.stroke();
+    ctx.strokeStyle = 'rgba(' + PAPER + ',.08)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(cx, cy, tr + 26, 0, 2 * Math.PI); ctx.stroke();
+  }
+
+  function drawSched() {
+    var c = document.getElementById('sched-art'), g = sizeCanvas(c), ctx = g.ctx;
+    var cx = g.w / 2, cy = g.h / 2, R = Math.min(g.w, g.h) * .42;
+    ctx.lineWidth = .7;
+    ctx.strokeStyle = 'rgba(' + PAPER + ',.10)'; for (var k = 0; k < 5; k++) ring(ctx, cx, cy, R, 9, 40, k, 5);
+    var n = 120; ctx.strokeStyle = 'rgba(' + PAPER + ',.22)'; ctx.lineWidth = 1.2; ctx.beginPath();
+    for (var t = 0; t < n; t++) { var a = 2 * Math.PI * t / n; ctx.moveTo(cx + (R + 22) * Math.cos(a), cy + (R + 22) * Math.sin(a)); ctx.lineTo(cx + (R + 30) * Math.cos(a), cy + (R + 30) * Math.sin(a)); }
+    ctx.stroke();
+  }
+
+  // dot-grid pools for the pricing panels
+  function pool(id, mark) {
+    var svg = document.getElementById(id), out = [], cols = 16, rows = 5, gx = 440 / cols, gy = 150 / rows, rad = 7;
+    var you = [10, 2];
+    for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) {
+      var x = gx * c + gx / 2, y = gy * r + gy / 2, me = mark && c === you[0] && r === you[1];
+      out.push('<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + rad + '" fill="' + (me ? '#111111' : (mark ? '#D2D2D1' : '#545457')) + '"/>');
+      if (me) out.push('<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + (rad + 6) + '" fill="none" stroke="#111111" stroke-width="1.2"/>');
+    }
+    svg.innerHTML = out.join('');
+  }
+  pool('pool-a', false); pool('pool-b', true);
+
+  // oval guilloche ring around the portrait
+  (function () {
+    var d = [], cx = 150, cy = 190, rx = 124, ry = 158, K = 3, lobes = 44;
+    for (var k = 0; k < K; k++) {
+      var ph = 2 * Math.PI * k / K / lobes, p = [];
+      for (var i = 0; i <= 720; i++) { var t = 2 * Math.PI * i / 720, o = 11 + 5 * Math.sin(lobes * (t + ph)); p.push((i ? 'L' : 'M') + (cx + (rx + o) * Math.cos(t)).toFixed(1) + ' ' + (cy + (ry + o) * Math.sin(t)).toFixed(1)); }
+      d.push(p.join('') + 'Z');
+    }
+    document.getElementById('oval-ring').setAttribute('d', d.join(''));
+  })();
+
+  function drawAll() { drawFrame(); drawHero(); drawSched(); }
+  var raf = 0;
+  window.addEventListener('resize', function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(drawAll); });
+  card.addEventListener('animationend', drawAll);
+  if ('ResizeObserver' in window) new ResizeObserver(function () { cancelAnimationFrame(raf); raf = requestAnimationFrame(drawAll); }).observe(card);
+  drawAll();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawAll);
 })();
 </script>
 </body>

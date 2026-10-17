@@ -17,6 +17,10 @@ Cloudflare redeploys the site automatically after every commit.
 The "See what you'd actually pay" form emails each request to ajh@aidenjameshealth.us through FormSubmit (formsubmit.co).
 The very first submission sends an activation email to that inbox; click the link in it once, and every request after that arrives as an email.
 
+The form has two steps (situation and state, then name, phone and optional ages). Business card QR codes open `https://aidenjameshealth.us/?card=NNNN#quote`; the form then shows the card number, and the email subject and "Came from" line name the card that brought the request in.
+
+To test the form without sending anything, set `var DRAFT = false;` to `true` near the top of the script in `public/index.html`.
+
 ## Still to add
 
 - Your Florida license number in the footer, if you want it shown
