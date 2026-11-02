@@ -621,19 +621,44 @@ function sendHTML(key){
   const s = SEND[key];
   return `<div class="big" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4Z"/></svg></div>
   <div><h3>Done? Send it to ${s.to}.</h3>
-    <ol>
-      <li>Save your answers as a file${s.secret?", or copy them":""}.</li>
-      <li>Email it to <span class="addr" style="padding:2px 6px">${EMAIL}</span> with the subject “${esc(s.subj)}”.</li>
-      ${s.secret?"<li>Don't copy Keith or anyone else on it.</li>":""}
-    </ol>
+    <p style="margin-top:8px">Tap <b>Send to Aiden</b> and your answers go straight to his inbox${s.secret?". Keith never sees them":""}. You can send again if you change something.</p>
     <div class="actions">
-      <button class="btn" type="button" data-save="${key}" id="save-${key}">Save my answers</button>
+      <button class="btn" type="button" data-email="${key}" id="email-${key}">Send to Aiden</button>
+      <button class="btn ghost" type="button" data-save="${key}" id="save-${key}">Save a copy</button>
       <button class="btn ghost" type="button" data-copytext="${key}" id="copytext-${key}">Copy answers as text</button>
-      <button class="btn ghost" type="button" data-copy="${EMAIL}" id="copyemail-${key}">Copy email address</button>
     </div>
     <p class="toast" id="toast-${key}" role="status"></p>
-    ${s.secret?`<p class="muted" style="font-size:13px;margin-top:6px">Email isn't encrypted. If you'd rather use a secure upload link, email Aiden and he'll send you one.</p>`:""}
   </div>`;
+}
+const LABEL = { business:"Business profile", census:"Census, parts A and B", roster:"Employment details (part C)", confidential:"Confidential health and income" };
+function buildPayload(key){
+  const d = {};
+  let filled = 0, who = "";
+  const v = x => { if(x) filled++; return x || "—"; };
+  if(key==="roster"){
+    const rows = state.roster.filter(r=>Object.values(r).some(Boolean));
+    rows.forEach((r,i)=>{
+      const n = parseFloat(r.hours), ft = isNaN(n) ? "" : (n>=30 ? " (Full-time)" : " (Part-time)");
+      d[`Employee ${i+1}`] = [r.empid, r.name, r.doh && "Hired "+r.doh, r.dept, r.title, r.hours && r.hours+" hrs/wk"+ft, r.salary].filter(Boolean).join(" · ");
+      filled++;
+    });
+    who = rows.length + " employee" + (rows.length===1?"":"s");
+  } else {
+    FORMS[key].sections.forEach(([leg,fields])=>fields.forEach(f=>{ d[f[1]] = v(state[key][f[0]]); }));
+    if(key==="confidential"){
+      YN.forEach(([k,q])=>{ d[q] = v(state.yn[k]); });
+      state.meds.filter(m=>Object.values(m).some(Boolean)).forEach((m,i)=>{
+        d[`Medication ${i+1}`] = [m.drug, m.dose, m.type, m.who && "Taken by: "+m.who, m.cost && m.cost+"/mo"].filter(Boolean).join(" · "); filled++;
+      });
+      who = state.confidential.empid || "Employee";
+    } else if(key==="census"){
+      who = [state.census.first, state.census.last].filter(Boolean).join(" ") || state.census.empid || "Employee";
+    } else { who = state.business.legal || "Keith's Business"; }
+  }
+  const out = { _subject: `Keith's Business census: ${LABEL[key]} - ${who}`, _template: "table", _captcha: "false", "Form": LABEL[key] };
+  Object.assign(out, d);
+  out["Submitted"] = new Date().toLocaleString();
+  return { data: out, filled };
 }
 function toast(key, msg, err){ const t=$("#toast-"+key); if(!t) return; t.textContent=msg; t.classList.toggle("err",!!err); }
 async function copy(text, onOk, onFail){
@@ -648,7 +673,23 @@ document.addEventListener("click", async e => {
   if(b.dataset.copytext){
     const key = b.dataset.copytext; const {text} = buildExport(key);
     const plain = text.split("\r\n").map(l=>l.replace(/^"|"$/g,"").split('","').map(c=>c.replace(/""/g,'"')).filter(Boolean).join(": ")).filter(Boolean).join("\n");
-    copy(plain, ()=>toast(key,"Answers copied. Paste them into an email to Aiden."), ()=>toast(key,"Your browser blocked copying. Use Save my answers instead.", true));
+    copy(plain, ()=>toast(key,"Answers copied. Paste them into an email to Aiden."), ()=>toast(key,"Your browser blocked copying. Use Save a copy instead.", true));
+  }
+  if(b.dataset.email){
+    const key = b.dataset.email; const {data, filled} = buildPayload(key);
+    if(!filled){ toast(key,"Fill in at least one answer before sending.", true); return; }
+    b.disabled = true; const label = b.textContent; b.textContent = "Sending…"; toast(key,"");
+    try{
+      const r = await fetch("https://formsubmit.co/ajax/" + EMAIL, { method:"POST", headers:{ "Content-Type":"application/json", "Accept":"application/json" }, body: JSON.stringify(data) });
+      const j = await r.json();
+      if(String(j.success)!=="true") throw new Error(j.message || "Not sent");
+      b.textContent = "Sent ✓"; toast(key,"Sent. Aiden has your answers.");
+      setTimeout(()=>{ b.textContent = "Send again"; b.disabled = false; }, 2500);
+    }catch(err){
+      b.textContent = label; b.disabled = false;
+      toast(key,`That didn't go through. Tap Save a copy and email it to ${EMAIL}.`, true);
+    }
+    return;
   }
   if(b.dataset.save){
     const key = b.dataset.save; const {filename, text} = buildExport(key);
@@ -657,7 +698,7 @@ document.addEventListener("click", async e => {
       const a = document.createElement("a"); a.href = url; a.download = filename;
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(()=>URL.revokeObjectURL(url), 2000);
-      toast(key,`Saved ${filename}. Now attach it to an email to Aiden.`);
+      toast(key,`Saved ${filename} to your device.`);
     }catch(err){ toast(key,"Couldn't save the file. Use Copy answers as text instead.", true); }
   }
   if(b.dataset.go){ setRoleFromStep(b.dataset.who); show(b.dataset.go); }
