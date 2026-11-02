@@ -652,14 +652,6 @@ document.addEventListener("click", async e => {
   }
   if(b.dataset.save){
     const key = b.dataset.save; const {filename, text} = buildExport(key);
-    if(window.claude && window.claude.use){
-      const dl = await window.claude.use("downloads").catch(()=>null);
-      if(dl){
-        try{ await dl.save({filename, data:text}); toast(key,`Saved ${filename}. Now attach it to an email to Aiden.`); }
-        catch(err){ toast(key, err && err.code==="declined" ? "Save cancelled." : "Couldn't save the file. Use Copy answers as text instead.", !(err && err.code==="declined")); }
-      } else { toast(key,"Saving files isn't available here. Use Copy answers as text instead.", true); }
-      return;
-    }
     try{
       const url = URL.createObjectURL(new Blob([text], {type:"text/csv;charset=utf-8"}));
       const a = document.createElement("a"); a.href = url; a.download = filename;
